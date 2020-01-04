@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import ToolbarModule from './toolbar/toolbar.module';
 import SideNavModule from './sidenav/sidenav.module';
+import { FooterModule } from './footer/footer.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +18,8 @@ import SideNavModule from './sidenav/sidenav.module';
     BrowserAnimationsModule,
 
     ToolbarModule,
-    SideNavModule
+    SideNavModule,
+    FooterModule
   ],
   providers: [],
   bootstrap: [AppComponent]
