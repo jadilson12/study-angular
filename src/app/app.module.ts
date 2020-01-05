@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { LayoutModule } from '@angular/cdk/layout';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,7 +20,9 @@ import { FooterModule } from './footer/footer.module';
 
     ToolbarModule,
     SideNavModule,
-    FooterModule
+    FooterModule,
+    LayoutModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

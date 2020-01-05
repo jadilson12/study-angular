@@ -1,4 +1,12 @@
-<mat-drawer-container class="container">
-  <mat-drawer mode="side" opened>Drawer</mat-drawer>
-  <mat-drawer-content>Main</mat-drawer-content>
-</mat-drawer-container>
+<mat-sidenav-container class="container">
+  <mat-sidenav mode="side" [opened]="drawer" class="sidenav">
+    <mat-toolbar>Menu</mat-toolbar>
+
+    <mat-list role="list">
+      <mat-list-item role="listitem">Home</mat-list-item>
+      <mat-list-item role="listitem" >Categoria</mat-list-item>
+      <mat-list-item role="listitem">Produto</mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>Main content</mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,16 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { Component } from '@angular/core';
+import { SidenavService } from '../sidenav/sidenav.service';
+
 
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent {
 
-  constructor() { }
+  constructor(private sidenavService: SidenavService) { }
 
-  ngOnInit() {
+  setDawer() {
+    this.sidenavService.setDrawer()
   }
-
 }
