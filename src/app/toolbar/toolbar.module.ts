@@ -8,20 +8,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
-  declarations: [
-    ToolbarComponent
-  ],
-  imports: [
-    BrowserModule,
-
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule
-  ],
+  declarations: [ToolbarComponent],
+  imports: [BrowserModule, MatToolbarModule, MatIconModule, MatButtonModule],
   providers: [],
   bootstrap: [],
-  exports: [
-    ToolbarComponent
-  ]
+  exports: [ToolbarComponent],
 })
-export default class ToolbarModule { }
+export class ToolbarModule {}
