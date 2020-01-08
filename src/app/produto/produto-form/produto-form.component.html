@@ -1,0 +1,26 @@
+<form class="normal-form" [formGroup]="produtoForm" (ngSubmit)="onSubmit()">
+  <div class="container" cols="2">
+    <div class="controles-container">
+      <mat-toolbar>
+        <span class="title">Cadastro de produto</span>
+      </mat-toolbar>
+      <mat-form-field>
+        <input matInput formControlName="nome" placeholder="Nome" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="descricao" placeholder="Descrição" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select formControlName="categoria" placeholder="Categoria">
+          <mat-option disable>Seleciona</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div class="form-footer">
+        <button mat-raised-button color="warn">Limpar</button>
+        <button mat-raised-button color="primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</form>
