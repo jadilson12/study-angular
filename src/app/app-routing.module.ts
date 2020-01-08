@@ -1,11 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
+import { CategoriaComponent } from './categoria/categoria.component';
+import { HomeComponent } from './home/home.component';
+import { ProdutoComponent } from './produto/produto.component';
+import { NotFaundComponent } from './not-faund/not-faund.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'produto', component: ProdutoComponent },
+  { path: 'categoria', component: CategoriaComponent },
+  { path: '**', component: NotFaundComponent, pathMatch: 'full' },
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  declarations: [],
+  imports: [CommonModule, RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
