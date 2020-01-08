@@ -1,8 +1,18 @@
 .container {
   max-width: 100%;
-  height: 85%;
+  height: 60%;
 }
 
 .sidenav {
   width: 200px;
+}
+:host {
+  .mat-list-item.active {
+    background-color: #cc1919 !important;
+
+    &:hover,
+    &:focus > .mat-list-item {
+      background-color: #4919cc !important;
+    }
+  }
 }

@@ -1,15 +1,19 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SidenavService {
-  drawer: boolean = false
+  drawer: boolean = false;
 
-  mudaDrawer = new EventEmitter ();
+  mudaDrawer = new EventEmitter();
 
   setDrawer() {
-    this.drawer = !this.drawer
+    this.drawer = !this.drawer;
     this.mudaDrawer.emit(this.drawer);
+  }
+
+  public closeDrawer() {
+    this.drawer = !this.drawer;
   }
 }
