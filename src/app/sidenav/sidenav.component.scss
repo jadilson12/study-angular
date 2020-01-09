@@ -6,13 +6,11 @@
 .sidenav {
   width: 200px;
 }
-:host {
-  .mat-list-item.active {
-    background-color: #cc1919 !important;
 
-    &:hover,
-    &:focus > .mat-list-item {
-      background-color: #4919cc !important;
-    }
-  }
+.mat-list-item:hover {
+  background-color: #e3f2fd !important;
+}
+
+.mat-list-item:focus {
+  background-color: #90caf9 !important;
 }
