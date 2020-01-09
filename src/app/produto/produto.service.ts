@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Observable, of } from 'rxjs';
+import { Produtos } from './produto-class.component';
+import { PRODUTOS } from '../mock-produtos';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProdutoService {
-  private produtos: any;
   constructor() {}
 
-  public create(formGroup: FormGroup) {
-    console.log(formGroup);
+  public getProdutos(): Observable<Produtos[]> {
+    return of(PRODUTOS);
   }
-  public read() {
-    //
+  public create(formGroup: FormGroup) {
+    console.log(formGroup.value);
   }
   public update(produto: object) {
     //
