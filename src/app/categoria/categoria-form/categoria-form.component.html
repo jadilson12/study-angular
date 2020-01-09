@@ -1,20 +1,39 @@
-<form class="normal-form" [formGroup]="form" (ngSubmit)="onSubmit()">
-  <mat-grid-list cols="1" row-height="100px">
-    <div class="controles-container">
-      <mat-toolbar>
-        <h1>Cadastro de categoria</h1>
-      </mat-toolbar>
-      <input type="hidden" formControlName="$key">
-      <mat-form-field>
-        <input formControlName="nome" matInput placeholder="Nome">
-      </mat-form-field>
-      <mat-form-field>
-        <input formControlName="descricao" matInput placeholder="Descrição">
-      </mat-form-field>
-    </div>
-    <div class="form-footer">
-      <button mat-raised-button color="warn">Limpar</button>
-      <button mat-raised-button color="primary" type="submit">Salvar</button>
-    </div>
-  </mat-grid-list>
+<form class="normal-form" [formGroup]="categoriaform" (ngSubmit)="onSubmit()">
+  <mat-card class="mat-elevation-z8">
+    <mat-grid-list cols="1" row-height="100px">
+      <!-- Cabeçalho da pagina -->
+      <mat-card-header class="card-heard">
+        <mat-card-title>Criar categoria</mat-card-title>
+      </mat-card-header>
+      <div class="controles-container">
+        <mat-form-field>
+          <input formControlName="nome" matInput placeholder="Nome" />
+        </mat-form-field>
+        <mat-form-field>
+          <input formControlName="descricao" matInput placeholder="Descrição" />
+        </mat-form-field>
+      </div>
+      <div class="form-footer">
+        <button mat-raised-button color="secundary" (click)="onBack()">
+          voltar
+        </button>
+        <button
+          mat-raised-button
+          color="warn"
+          [disabled]="!categoriaform.dirty"
+          (click)="formClear()"
+        >
+          Limpar
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!categoriaform.valid"
+        >
+          Salvar
+        </button>
+      </div>
+    </mat-grid-list>
+  </mat-card>
 </form>

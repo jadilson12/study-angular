@@ -1,42 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
 
 import { CategoriaService } from '../categoria.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-categoria-form',
   templateUrl: './categoria-form.component.html',
-  styleUrls: ['./categoria-form.component.scss']
+  styleUrls: ['./categoria-form.component.scss'],
 })
 export class CategoriaFormComponent implements OnInit {
+  public categoriaform: FormGroup;
 
-  form: FormGroup;
-
-  setores = [
-    { id: 1, value: 'RH' },
-    { id: 2, value: 'Administação' },
-    { id: 3, value: 'Atendimento' }
-  ];
   constructor(
-    private _formBuild: FormBuilder,
-    private _http: HttpClient
-  ) { }
-  // constructor(private categoriaService: CategoriaService) { }
-  ngOnInit() {
-    this.form = this._formBuild.group({
-      $key: [null],
-      nome: [''],
-      descricao: [null],
-    })
+    private _formBuilder: FormBuilder,
+    private _categoriaService: CategoriaService,
+    private _location: Location,
+  ) {}
+
+  public ngOnInit() {
+    this.categoriaform = this._formBuilder.group({
+      nome: ['', Validators.required],
+      descricao: ['', Validators.required],
+    });
   }
 
-  onSubmit() {
-
-    this._http.post('https://httpbin.org/post', JSON.stringify(this.form.value))
-      .subscribe(res => {
-        console.log(res);
-        this.form.reset()
-      })
+  public onSubmit() {
+    this._categoriaService.create(this.categoriaform);
+  }
+  public formClear() {
+    this.categoriaform.reset();
+  }
+  public onBack() {
+    this._location.back();
   }
 }
