@@ -2,11 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { CategoriaComponent } from './categoria.component';
 import { CategoriaFormComponent } from './categoria-form/categoria-form.component';
 import { CategoriaListComponent } from './categoria-list/categoria-list.component';
-// import { CategoriaService } from './categoria.service';
+import { CategoriaService } from './categoria.service';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
@@ -21,18 +22,20 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
   declarations: [
     CategoriaComponent,
     CategoriaFormComponent,
     CategoriaListComponent,
-    // CategoriaService
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
+    RouterModule,
 
     MatGridListModule,
     MatButtonModule,
@@ -47,13 +50,10 @@ import { MatTableModule } from '@angular/material/table';
     MatTableModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
-
+    MatIconModule,
+    MatCardModule,
   ],
-  providers: [
-    // CategoriaService
-  ],
-  exports: [
-    CategoriaComponent,
-  ]
+  providers: [CategoriaService],
+  exports: [CategoriaComponent],
 })
-export class CategoriaModule { }
+export class CategoriaModule {}

@@ -1,38 +1,44 @@
 import { Injectable } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+
+import { Observable, of, from } from 'rxjs';
+import { Categorias } from './categoria-class.component';
+import { CATEGORIA } from '../mock-categorias';
+import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CategoriaService {
+  public categoria: Categorias[] = [];
+  constructor(private _router: Router) {}
 
-  form: FormGroup = new FormGroup({
-    $key: new FormControl(null),
-    nome: new FormControl(''),
-    descricao: new FormControl(''),
-    tipo: new FormControl('1'),
-    setores: new FormControl(0),
-    date: new FormControl(''),
-    isPublicado: new FormControl(false)
-  });
+  public getCategorias(): Observable<Categorias[]> {
+    return of(CATEGORIA);
+  }
+  public create(formGroup: FormGroup) {
+    let value = formGroup.value;
 
-  setores = [
-    { id: 1, value: 'RH' },
-    { id: 2, value: 'Administação' },
-    { id: 3, value: 'Atendimento' }
-  ];
+    const newId = Math.random()
+      .toString(36)
+      .substr(2, 1);
+    value = Object.assign({ id: newId }, value);
 
-  inicializaFormGroup() {
-    this.form.setValue({
-      $key: null,
-      nome: '',
-      descricao: '',
-      tipo: '1',
-      setores: 0,
-      date: '',
-      isPublicado: false
-    });
+    CATEGORIA.push(value);
+    this._router.navigate(['/categorias']);
   }
 
-  constructor() { }
+  public edit(categoria: any): void {
+    console.log('> edit service ' + categoria);
+    CATEGORIA.map((val, index) => {
+      if (val.id == categoria.id) {
+        CATEGORIA[index] = categoria;
+      }
+    });
+  }
+  public delete(id: number): void {
+    console.log('> delete service ' + id);
+    CATEGORIA.splice(id);
+    this.getCategorias();
+  }
 }
