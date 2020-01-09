@@ -1,26 +1,51 @@
 <form class="normal-form" [formGroup]="produtoForm" (ngSubmit)="onSubmit()">
-  <div class="container" cols="2">
-    <div class="controles-container">
-      <mat-toolbar>
-        <span class="title">Cadastro de produto</span>
-      </mat-toolbar>
-      <mat-form-field>
-        <input matInput formControlName="nome" placeholder="Nome" />
-      </mat-form-field>
+  <mat-card class="mat-elevation-z8">
+    <div class="container" cols="2">
+      <!-- Cabeçalho da pagina -->
+      <mat-card-header class="card-heard">
+        <mat-card-title>Cadastrar produto</mat-card-title>
+      </mat-card-header>
+      <div class="controles-container">
+        <mat-form-field>
+          <input matInput formControlName="nome" placeholder="Nome" />
+        </mat-form-field>
 
-      <mat-form-field>
-        <input matInput formControlName="descricao" placeholder="Descrição" />
-      </mat-form-field>
+        <mat-form-field>
+          <input matInput formControlName="descricao" placeholder="Descrição" />
+        </mat-form-field>
 
-      <mat-form-field>
-        <mat-select formControlName="categoria" placeholder="Categoria">
-          <mat-option disable>Seleciona</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <div class="form-footer">
-        <button mat-raised-button color="warn">Limpar</button>
-        <button mat-raised-button color="primary">Salvar</button>
+        <mat-form-field>
+          <mat-select formControlName="categoria" placeholder="Categoria">
+            <mat-option
+              *ngFor="let categoria of categorias"
+              [value]="categoria.id"
+            >
+              {{ categoria.nome }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="form-footer">
+          <button mat-raised-button color="secundary" (click)="onBack()">
+            voltar
+          </button>
+          <button
+            mat-raised-button
+            color="warn"
+            [disabled]="!produtoForm.dirty"
+            (click)="formClear()"
+          >
+            Limpar
+          </button>
+          <button
+            mat-raised-button
+            color="primary"
+            type="submit"
+            [disabled]="!produtoForm.valid"
+          >
+            Salvar
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+  </mat-card>
 </form>

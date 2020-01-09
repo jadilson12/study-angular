@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
+
 import { ProdutoService } from '../produto.service';
+import { CategoriaService } from 'src/app/categoria/categoria.service';
+import { Categorias } from '../../categoria/categoria-class.component';
 
 @Component({
   selector: 'app-produto-form',
@@ -8,22 +12,44 @@ import { ProdutoService } from '../produto.service';
   styleUrls: ['./produto-form.component.scss'],
 })
 export class ProdutoFormComponent implements OnInit {
-  public produtoForm: FormGroup;
+  produtoForm: FormGroup;
+  categorias: Categorias[];
 
   constructor(
-    private form: FormBuilder,
-    private produtoService: ProdutoService,
+    private _formBuilder: FormBuilder,
+    private _produtoService: ProdutoService,
+    private _categoriaService: CategoriaService,
+    private _location: Location,
   ) {}
 
-  public ngOnInit() {
-    this.produtoForm = this.form.group({
+  ngOnInit() {
+    this.inicializarForm();
+    this.getCategorias();
+  }
+
+  getCategorias(): void {
+    console.log('asas');
+    this._categoriaService
+      .getCategorias()
+      .subscribe(itens => (this.categorias = itens));
+  }
+
+  inicializarForm() {
+    this.produtoForm = this._formBuilder.group({
       nome: ['', Validators.required],
       descricao: ['', Validators.required],
-      categoria: '',
+      categoria: ['', Validators.required],
     });
   }
 
-  public onSubmit() {
-    this.produtoService.create(this.produtoForm);
+  onSubmit() {
+    this._produtoService.create(this.produtoForm);
+  }
+
+  formClear() {
+    this.produtoForm.reset();
+  }
+  public onBack() {
+    this._location.back();
   }
 }
