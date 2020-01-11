@@ -21,15 +21,11 @@
         color="warn"
         [disabled]="!categoriaform.dirty"
         (click)="formClear()"
+        *ngIf="!formEdit"
       >
         Limpar
       </button>
-      <button
-        mat-raised-button
-        color="primary"
-        type="submit"
-        [disabled]="!categoriaform.valid"
-      >
+      <button mat-raised-button color="primary" type="submit" [disabled]="!categoriaform.valid">
         Salvar
       </button>
     </div>

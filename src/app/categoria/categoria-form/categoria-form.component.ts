@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Inject, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { CategoriaService } from '../categoria.service';
@@ -34,18 +34,15 @@ export class CategoriaFormComponent implements OnInit {
       descricao: ['', Validators.required],
       id: '',
     });
+    if (this._data.data) {
+      this.categoriaform.patchValue(this._data.data);
 
-    if (this._data.categoria) {
-      this.categoriaform.patchValue(this._data.categoria);
       this.formEdit = true;
     }
   }
 
   public onSubmit() {
-    if (!this.formEdit) {
-      this.create();
-    }
-    this.update();
+    this.formEdit ? this.update() : this.create();
     this.closeDialog();
   }
 

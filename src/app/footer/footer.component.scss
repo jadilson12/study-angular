@@ -1,4 +1,11 @@
-.app-footer{
+.app-footer {
+  position: fixed;
   display: flex;
   justify-content: center;
+  bottom: 2px;
+  width: 100%;
+}
+
+.mat-card {
+  padding: 0em !important;
 }

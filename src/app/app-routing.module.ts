@@ -16,7 +16,6 @@ const routes: Routes = [
   { path: 'produto/novo', component: ProdutoFormComponent },
   { path: 'categorias', component: CategoriaComponent },
   { path: 'categoria/nova', component: CategoriaFormComponent },
-  { path: 'categoria/:id', component: CategoriaFormComponent },
   { path: '**', component: NotFaundComponent, pathMatch: 'full' },
 ];
 

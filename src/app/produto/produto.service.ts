@@ -1,25 +1,38 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Observable, of } from 'rxjs';
-import { Produtos } from './produto-class.component';
-import { PRODUTOS } from '../mock-produtos';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+import { Produtos } from './produto';
+import { httpOptions } from '../config/httpOptions';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProdutoService {
-  constructor() {}
+  produtoUrl = 'api/produtos';
 
-  public getProdutos(): Observable<Produtos[]> {
-    return of(PRODUTOS);
+  alterouProdutos = new EventEmitter();
+
+  constructor(private http: HttpClient) {}
+
+  getProdutos(): Observable<any> {
+    return this.http.get(this.produtoUrl);
   }
-  public create(formGroup: FormGroup) {
-    console.log(formGroup.value);
+
+  create(produto: Produtos): Observable<Produtos> {
+    return this.http.post<Produtos>(this.produtoUrl, produto, httpOptions);
   }
-  public update(produto: object) {
-    //
+
+  edit(produto: FormGroup): Observable<Produtos> {
+    return this.http.put<Produtos>(
+      `${this.produtoUrl}/${produto.value.id}`,
+      produto.value,
+      httpOptions,
+    );
   }
-  public delete(id: number) {
-    //
+
+  deleteProduto(id: number): Observable<{}> {
+    return this.http.delete(`${this.produtoUrl}/${id}`, httpOptions);
   }
 }

@@ -1,51 +1,43 @@
-<form class="normal-form" [formGroup]="produtoForm" (ngSubmit)="onSubmit()">
-  <mat-card class="mat-elevation-z8">
-    <div class="container" cols="2">
-      <!-- Cabeçalho da pagina -->
-      <mat-card-header class="card-heard">
-        <mat-card-title>Cadastrar produto</mat-card-title>
-      </mat-card-header>
-      <div class="controles-container">
-        <mat-form-field>
-          <input matInput formControlName="nome" placeholder="Nome" />
-        </mat-form-field>
+<form [formGroup]="produtoform" (ngSubmit)="onSubmit()">
+  <div class="container" cols="2">
+    <!-- Cabeçalho da pagina -->
+    <mat-card-header class="card-heard">
+      <mat-card-title>{{ isEdit() }} produto</mat-card-title>
+    </mat-card-header>
+    <div class="controles-container">
+      <mat-form-field>
+        <input matInput formControlName="nome" placeholder="Nome" />
+      </mat-form-field>
 
-        <mat-form-field>
-          <input matInput formControlName="descricao" placeholder="Descrição" />
-        </mat-form-field>
+      <mat-form-field>
+        <input matInput formControlName="descricao" placeholder="Descrição" />
+      </mat-form-field>
 
-        <mat-form-field>
-          <mat-select formControlName="categoria" placeholder="Categoria">
-            <mat-option
-              *ngFor="let categoria of categorias"
-              [value]="categoria.id"
-            >
-              {{ categoria.nome }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <div class="form-footer">
-          <button mat-raised-button color="secundary" (click)="onBack()">
-            voltar
-          </button>
-          <button
-            mat-raised-button
-            color="warn"
-            [disabled]="!produtoForm.dirty"
-            (click)="formClear()"
-          >
-            Limpar
-          </button>
-          <button
-            mat-raised-button
-            color="primary"
-            type="submit"
-            [disabled]="!produtoForm.valid"
-          >
-            Salvar
-          </button>
-        </div>
+      <mat-form-field>
+        <mat-select formControlName="categoria" placeholder="Categoria" [(value)]="selected">
+          <mat-option *ngFor="let categoria of categorias | async" [value]="categoria.nome">
+            {{ categoria.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <div class="form-footer">
+        <button mat-raised-button color="secundary" (click)="closeDialog()">
+          Fechar
+        </button>
+        <button
+          mat-raised-button
+          color="warn"
+          (click)="formClear()"
+          *ngIf="!formEdit"
+          [disabled]="!produtoform.dirty"
+        >
+          Limpar
+        </button>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!produtoform.valid">
+          Salvar
+        </button>
       </div>
     </div>
-  </mat-card>
+  </div>
 </form>

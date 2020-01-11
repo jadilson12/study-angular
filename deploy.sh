@@ -18,4 +18,5 @@ git checkout -b gh-pages
 # git push -f git@github.com:jadilson12/demo master
 git push -f git@github.com:jadilson12/demo gh-pages
 
-rm -rf ../$path
+cd ../../
+rm -rf dist/study

@@ -2,8 +2,8 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { httpOptions } from '../config/httpOptions';
 
+import { httpOptions } from '../config/httpOptions';
 import { Categoria } from './categoria';
 
 @Injectable({
@@ -11,6 +11,7 @@ import { Categoria } from './categoria';
 })
 export class CategoriaService {
   categoriaUrl = 'api/categorias';
+
   alterouCategorias = new EventEmitter();
 
   constructor(private http: HttpClient) {}

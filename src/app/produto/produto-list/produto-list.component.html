@@ -2,11 +2,11 @@
   <!-- Cabeçalho da pagina -->
   <mat-card-header class="card-heard">
     <mat-card-title>Produtos</mat-card-title>
-    <a mat-raised-button color="primary" [routerLink]="['/produto/novo']">
+    <a mat-raised-button color="primary" (click)="openDialog()">
       Novo produto
     </a>
   </mat-card-header>
-  <mat-table #table [dataSource]="data">
+  <mat-table #table [dataSource]="dataSource">
     <!-- id Column -->
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
@@ -27,8 +27,21 @@
 
     <!-- Categoria Column -->
     <ng-container matColumnDef="categoria">
-      <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Categorias </mat-header-cell>
       <mat-cell *matCellDef="let item"> {{ item.categoria }} </mat-cell>
+    </ng-container>
+
+    <!-- Categoria Column -->
+    <ng-container matColumnDef="acoes">
+      <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+      <mat-cell *matCellDef="let item">
+        <button mat-button (click)="openDialog(item)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-button (click)="delete(item.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

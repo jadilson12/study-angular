@@ -5,14 +5,12 @@ p {
 .container {
   display: flex;
   flex-direction: column;
-  max-height: 500px;
   min-width: 300px;
   margin: 10px;
 }
 
 .mat-table {
   overflow: auto;
-  max-height: 500px;
 }
 
 .card-heard {
