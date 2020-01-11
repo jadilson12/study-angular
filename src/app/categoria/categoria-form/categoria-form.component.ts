@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Location } from '@angular/common';
 
 import { CategoriaService } from '../categoria.service';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogService } from '../../shared/dialog.service';
 
 @Component({
   selector: 'app-categoria-form',
@@ -11,27 +12,74 @@ import { CategoriaService } from '../categoria.service';
 })
 export class CategoriaFormComponent implements OnInit {
   public categoriaform: FormGroup;
+  private formEdit: boolean;
+
+  public categoriaAdicionada = new EventEmitter();
 
   constructor(
     private _formBuilder: FormBuilder,
     private _categoriaService: CategoriaService,
-    private _location: Location,
+    public dialogRef: MatDialogRef<CategoriaFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public _data: any,
+    private dialogService: DialogService,
   ) {}
 
   public ngOnInit() {
+    this.start();
+  }
+
+  private start() {
     this.categoriaform = this._formBuilder.group({
       nome: ['', Validators.required],
       descricao: ['', Validators.required],
+      id: '',
     });
+
+    if (this._data.categoria) {
+      this.categoriaform.patchValue(this._data.categoria);
+      this.formEdit = true;
+    }
   }
 
   public onSubmit() {
-    this._categoriaService.create(this.categoriaform);
+    if (!this.formEdit) {
+      this.create();
+    }
+    this.update();
+    this.closeDialog();
   }
+
+  private update() {
+    this._categoriaService.edit(this.categoriaform).subscribe(res => {
+      this._categoriaService.alterouCategorias.emit(res);
+    });
+  }
+
+  private create() {
+    let value = this.categoriaform.value;
+
+    // start Temporario apenas para api mock
+    const newId = Math.random()
+      .toString(36)
+      .substr(2, 1);
+    // end
+    if (this.categoriaform.valid) {
+      value = Object.assign(value, { id: newId });
+      this._categoriaService.create(value).subscribe(categoria => {
+        this._categoriaService.alterouCategorias.emit(categoria);
+      });
+    }
+  }
+
+  public isEdit() {
+    return this.formEdit ? 'Atualizar' : 'Criar';
+  }
+
   public formClear() {
     this.categoriaform.reset();
   }
-  public onBack() {
-    this._location.back();
+
+  public closeDialog() {
+    this.dialogService.closeDialog();
   }
 }

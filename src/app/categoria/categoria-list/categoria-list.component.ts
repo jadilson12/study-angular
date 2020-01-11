@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Categorias } from './../categoria-class.component';
 import { CategoriaService } from '../categoria.service';
-import { MatTableDataSource } from '@angular/material/table';
-import { CATEGORIA } from 'src/app/mock-categorias';
+import { CategoriaFormComponent } from '../categoria-form/categoria-form.component';
+import { DialogService } from '../../shared/dialog.service';
 
 @Component({
   selector: 'app-categoria-list',
@@ -11,26 +10,34 @@ import { CATEGORIA } from 'src/app/mock-categorias';
   styleUrls: ['./categoria-list.component.scss'],
 })
 export class CategoriaListComponent implements OnInit {
-  public data: Categorias[];
-  public displayedColumns = ['id', 'nome', 'descricao', 'acoes'];
-  public dataSource = new MatTableDataSource<Categorias>(CATEGORIA);
+  displayedColumns = ['id', 'nome', 'descricao', 'acoes'];
+  dataSource: [];
 
-  constructor(private categoriaService: CategoriaService) {}
+  constructor(private categoriaService: CategoriaService, private dialogService: DialogService) {}
 
-  public ngOnInit() {
-    this.getCategoria();
+  ngOnInit() {
+    this.getCategorias();
+    this.categoriaService.alterouCategorias.subscribe(_ => {
+      this.getCategorias();
+    });
   }
 
-  public getCategoria() {
-    this.categoriaService
-      .getCategorias()
-      .subscribe(itens => (this.data = itens));
+  getCategorias() {
+    this.categoriaService.getCategorias().subscribe(data => {
+      this.dataSource = data;
+    });
   }
-  public edit(id: number): void {
-    this.categoriaService.edit(id);
+  delete(categoria: any) {
+    this.categoriaService.deleteCategoria(categoria.id).subscribe(
+      _ => this.getCategorias(),
+      error => console.log('> Deu erro ' + error),
+    );
   }
 
-  public delete(id: number): void {
-    this.categoriaService.delete(id);
+  openDialog(categoria: any): void {
+    this.dialogService.openDialog(CategoriaFormComponent, categoria);
+  }
+  onNoClick() {
+    this.dialogService.closeDialog();
   }
 }

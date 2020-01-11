@@ -1,44 +1,37 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { Observable, of, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { httpOptions } from '../config/httpOptions';
 
-import { Observable, of, from } from 'rxjs';
-import { Categorias } from './categoria-class.component';
-import { CATEGORIA } from '../mock-categorias';
-import { Router } from '@angular/router';
+import { Categoria } from './categoria';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CategoriaService {
-  public categoria: Categorias[] = [];
-  constructor(private _router: Router) {}
+  categoriaUrl = 'api/categorias';
+  alterouCategorias = new EventEmitter();
 
-  public getCategorias(): Observable<Categorias[]> {
-    return of(CATEGORIA);
-  }
-  public create(formGroup: FormGroup) {
-    let value = formGroup.value;
+  constructor(private http: HttpClient) {}
 
-    const newId = Math.random()
-      .toString(36)
-      .substr(2, 1);
-    value = Object.assign({ id: newId }, value);
-
-    CATEGORIA.push(value);
-    this._router.navigate(['/categorias']);
+  getCategorias(): Observable<any> {
+    return this.http.get(this.categoriaUrl);
   }
 
-  public edit(categoria: any): void {
-    console.log('> edit service ' + categoria);
-    CATEGORIA.map((val, index) => {
-      if (val.id == categoria.id) {
-        CATEGORIA[index] = categoria;
-      }
-    });
+  create(categoria: Categoria): Observable<Categoria> {
+    return this.http.post<Categoria>(this.categoriaUrl, categoria, httpOptions);
   }
-  public delete(id: number): void {
-    console.log('> delete service ' + id);
-    CATEGORIA.splice(id);
-    this.getCategorias();
+
+  edit(categoria: FormGroup): Observable<Categoria> {
+    return this.http.put<Categoria>(
+      `${this.categoriaUrl}/${categoria.value.id}`,
+      categoria.value,
+      httpOptions,
+    );
+  }
+
+  deleteCategoria(id: number): Observable<{}> {
+    return this.http.delete(`${this.categoriaUrl}/${id}`, httpOptions);
   }
 }
