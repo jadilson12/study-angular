@@ -1,6 +1,8 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
@@ -11,13 +13,12 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"]
+  },
+  "rules": {
+    "no-duplicate-variable": true,
+    "no-unused-expression": true
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
