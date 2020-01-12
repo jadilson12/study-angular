@@ -1,0 +1,8 @@
+<ng-container *ngIf="field.hasError('required')">O Campo {{ name }} é obrigatório.</ng-container>
+<ng-container *ngIf="field.hasError('minlength')"
+  >O min {{ field.errors.minlength.requiredLength }} digitou apenas
+  {{ field.errors.minlength.actualLength }} .</ng-container
+>
+<ng-container *ngIf="field.hasError('maxlength')"
+  >O máximo premitido é apenas {{ field.errors.maxlength.requiredLength }}.</ng-container
+>
