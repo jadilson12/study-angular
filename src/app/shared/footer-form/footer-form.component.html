@@ -1,0 +1,34 @@
+<div class="form-footer">
+  <button
+    mat-raised-button
+    type="button"
+    color="secundary"
+    matTooltip="Clique para fechar a janela"
+    matTooltipPosition="above"
+    (click)="closeFormFn()"
+  >
+    Fechar
+  </button>
+  <button
+    mat-raised-button
+    color="warn"
+    type="button"
+    matTooltip="Clique para limpar o fomulário"
+    matTooltipPosition="above"
+    [disabled]="!nameForm.dirty"
+    (click)="clearFormFn()"
+    *ngIf="!isFormEdit"
+  >
+    Limpar
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    matTooltip="Clique para salvar so fomulário"
+    matTooltipPosition="above"
+    [disabled]="!nameForm.valid"
+  >
+    Salvar
+  </button>
+</div>
