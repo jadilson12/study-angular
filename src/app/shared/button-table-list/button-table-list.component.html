@@ -1,0 +1,18 @@
+<button
+  mat-button
+  (click)="openDialogEdit(item)"
+  matTooltip="Clique para editar o item"
+  matTooltipPosition="above"
+  matTooltipClass="btn-edit"
+>
+  <mat-icon>edit</mat-icon>
+</button>
+<button
+  mat-button
+  (click)="delete(item)"
+  matTooltip="Clique para excluir o item"
+  matTooltipClass="btn-delete"
+  matTooltipPosition="above"
+>
+  <mat-icon>delete</mat-icon>
+</button>

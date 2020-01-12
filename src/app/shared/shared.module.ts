@@ -13,8 +13,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { DialogService } from './dialog.service';
 import { AlertService } from './alert.service';
 import { FooterFormComponent } from './footer-form/footer-form.component';
+import { ButtonTableListComponent } from './button-table-list/button-table-list.component';
 @NgModule({
-  declarations: [MessageErrorComponent, FooterFormComponent],
+  declarations: [MessageErrorComponent, FooterFormComponent, ButtonTableListComponent],
   imports: [
     CommonModule,
 
@@ -26,7 +27,7 @@ import { FooterFormComponent } from './footer-form/footer-form.component';
     MatGridListModule,
     MatTooltipModule,
   ],
-  exports: [MessageErrorComponent, FooterFormComponent],
+  exports: [MessageErrorComponent, FooterFormComponent, ButtonTableListComponent],
   providers: [DialogService, AlertService],
 })
 export class SharedModule {}
