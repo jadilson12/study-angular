@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { SidenavService } from './sidenav.service';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SidenavService } from './sidenav.service';
 
 @Component({
   selector: 'app-sidenav',

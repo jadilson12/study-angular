@@ -64,9 +64,7 @@ export class CategoriaFormComponent implements OnInit {
     let value = this.form.value;
 
     // start Temporario apenas para api mock
-    const newId = Math.random()
-      .toString(36)
-      .substr(2, 1);
+    const newId = Math.floor(Math.random() * 101);
     // end
     if (this.form.valid) {
       value = Object.assign(value, { id: newId });

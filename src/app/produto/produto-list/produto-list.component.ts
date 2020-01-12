@@ -34,11 +34,10 @@ export class ProdutoListComponent implements OnInit {
       this.dataSource = data;
     });
   }
-  delete(id: number) {
-    this.produtoService.deleteProduto(id).subscribe(
+  delete(produto: any) {
+    this.produtoService.deleteProduto(produto.id).subscribe(
       _ => {
-        this.getProdutos();
-        this._alertService.sucess();
+        this.getProdutos(), this._alertService.sucess();
       },
       _ => {
         this._alertService.error();

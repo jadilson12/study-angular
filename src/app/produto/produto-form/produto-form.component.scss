@@ -3,14 +3,10 @@
   width: 100%;
 }
 
-.form-footer {
-  display: flex;
-  justify-content: flex-end;
-}
-.form-footer button {
-  margin: 5px;
-}
-
 p {
   font-family: Lato;
+}
+
+.mat-card-header-text {
+  margin: 0 2px !important;
 }

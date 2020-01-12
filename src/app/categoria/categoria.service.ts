@@ -1,8 +1,7 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { FormGroup } from '@angular/forms';
-import { Observable, of, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-
+import { EventEmitter, Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { httpOptions } from '../config/httpOptions';
 import { Categoria } from './categoria';
 
