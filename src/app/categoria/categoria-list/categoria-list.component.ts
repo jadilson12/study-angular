@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from '../categoria.service';
 import { CategoriaFormComponent } from '../categoria-form/categoria-form.component';
 import { DialogService } from '../../shared/dialog.service';
+import { AlertService } from '../../shared/alert.service';
 
 @Component({
   selector: 'app-categoria-list',
@@ -13,7 +14,11 @@ export class CategoriaListComponent implements OnInit {
   displayedColumns = ['id', 'nome', 'descricao', 'acoes'];
   dataSource: [];
 
-  constructor(private categoriaService: CategoriaService, private dialogService: DialogService) {}
+  constructor(
+    private categoriaService: CategoriaService,
+    private dialogService: DialogService,
+    private _alertService: AlertService,
+  ) {}
 
   ngOnInit() {
     this.getCategorias();
@@ -28,10 +33,9 @@ export class CategoriaListComponent implements OnInit {
     });
   }
   delete(categoria: any) {
-    this.categoriaService.deleteCategoria(categoria.id).subscribe(
-      _ => this.getCategorias(),
-      error => console.log('> Deu erro ' + error),
-    );
+    this.categoriaService.deleteCategoria(categoria.id).subscribe(() => {
+      this.getCategorias(), this._alertService.sucess();
+    });
   }
 
   openDialog(categoria: any): void {

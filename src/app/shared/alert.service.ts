@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 const messeges = {
   succes: {
@@ -39,26 +40,25 @@ export class AlertService {
   open() {
     this._snackBar.open(this.message, 'Fechar', config);
   }
-  sucess(message: string = null, action: string = null) {
+  sucess(message: string = null) {
     this.message = message || messeges.succes.default;
     config.panelClass.push(messeges.color.succes);
     this.open();
   }
-  info(message: string, action: string) {
-    this.message = message || messeges.info.default;
-    config.panelClass.push(messeges.color.info);
-    this.open();
-  }
-  error(message: string, action: string) {
+  error(message: string = null) {
     this.message = message || messeges.error.default;
     config.panelClass.push(messeges.color.error);
     this.open();
   }
-
-  TODO: any;
+  info(message: string = null) {
+    this.message = message || messeges.info.default;
+    config.panelClass.push(messeges.color.info);
+    this.open();
+  }
 
   // filterAction(action: string): string {
   //   let arr = Object.keys(messeges).map(k => messeges[k]);
+
   //   return arr.find(e => action === e.messeges.succes);
   // }
 }

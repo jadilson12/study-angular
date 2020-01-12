@@ -7,6 +7,7 @@ import { DialogService } from 'src/app/shared/dialog.service';
 import { CategoriaService } from './../../categoria/categoria.service';
 import { Observable } from 'rxjs';
 import { Categoria } from 'src/app/categoria/categoria';
+import { AlertService } from '../../shared/alert.service';
 
 @Component({
   selector: 'app-produto-form',
@@ -28,6 +29,7 @@ export class ProdutoFormComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public _data: any,
     public dialogRef: MatDialogRef<ProdutoFormComponent>,
     private dialogService: DialogService,
+    private _alertService: AlertService,
   ) {}
 
   public ngOnInit() {
@@ -55,9 +57,15 @@ export class ProdutoFormComponent implements OnInit {
   }
 
   private update() {
-    this._produtoService.edit(this.produtoform).subscribe(res => {
-      this._produtoService.alterouProdutos.emit(res);
-    });
+    this._produtoService.edit(this.produtoform).subscribe(
+      res => {
+        this._produtoService.alterouProdutos.emit(res);
+        this._alertService.sucess();
+      },
+      _ => {
+        this._alertService.error();
+      },
+    );
   }
 
   private create() {
@@ -70,9 +78,15 @@ export class ProdutoFormComponent implements OnInit {
     // end
 
     value = Object.assign(value, { id: newId });
-    this._produtoService.create(value).subscribe(res => {
-      this._produtoService.alterouProdutos.emit(res);
-    });
+    this._produtoService.create(value).subscribe(
+      res => {
+        this._produtoService.alterouProdutos.emit(res);
+        this._alertService.sucess();
+      },
+      _ => {
+        this._alertService.error();
+      },
+    );
   }
 
   public isEdit() {

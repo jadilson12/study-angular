@@ -1,5 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+.alert-succes {
+  background: #00c853;
+  color: #fff;
+}
+
+.alert-info {
+  background: #64b5f6;
+  color: #fff;
+}
+
+.alert-error {
+  background: #f44336;
+  color: #fff;
+}

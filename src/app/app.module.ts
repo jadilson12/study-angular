@@ -13,8 +13,8 @@ import { HomeModule } from './home/home.module';
 import { ProdutoModule } from './produto/produto.module';
 import { NotFaundModule } from './not-faund/not-faund.module';
 import { DataService } from './data.service';
-import { DialogService } from './shared/dialog.service';
 
+import { SharedModule } from './shared/shared.module';
 @NgModule({
   imports: [
     LayoutModule,
@@ -22,20 +22,21 @@ import { DialogService } from './shared/dialog.service';
     BrowserAnimationsModule,
     HttpClientModule,
 
+    HttpClientInMemoryWebApiModule.forRoot(DataService, {
+      dataEncapsulation: false,
+      passThruUnknownUrl: true,
+      put204: false, // return entity after PUT/update
+    }),
     ToolbarModule,
     SideNavModule,
     FooterModule,
     HomeModule,
     ProdutoModule,
     NotFaundModule,
-    HttpClientInMemoryWebApiModule.forRoot(DataService, {
-      dataEncapsulation: false,
-      passThruUnknownUrl: true,
-      put204: false, // return entity after PUT/update
-    }),
+    SharedModule,
   ],
   declarations: [AppComponent],
-  providers: [DataService, DialogService],
+  providers: [DataService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

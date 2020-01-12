@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CategoriaService } from '../categoria.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogService } from '../../shared/dialog.service';
+import { AlertService } from '../../shared/alert.service';
 
 @Component({
   selector: 'app-categoria-form',
@@ -17,6 +18,7 @@ export class CategoriaFormComponent implements OnInit {
   public categoriaAdicionada = new EventEmitter();
 
   constructor(
+    private _alertService: AlertService,
     private _formBuilder: FormBuilder,
     private _categoriaService: CategoriaService,
     public dialogRef: MatDialogRef<CategoriaFormComponent>,
@@ -47,9 +49,15 @@ export class CategoriaFormComponent implements OnInit {
   }
 
   private update() {
-    this._categoriaService.edit(this.categoriaform).subscribe(res => {
-      this._categoriaService.alterouCategorias.emit(res);
-    });
+    this._categoriaService.edit(this.categoriaform).subscribe(
+      res => {
+        this._categoriaService.alterouCategorias.emit(res);
+        this._alertService.sucess();
+      },
+      _ => {
+        this._alertService.error();
+      },
+    );
   }
 
   private create() {
@@ -62,9 +70,15 @@ export class CategoriaFormComponent implements OnInit {
     // end
     if (this.categoriaform.valid) {
       value = Object.assign(value, { id: newId });
-      this._categoriaService.create(value).subscribe(categoria => {
-        this._categoriaService.alterouCategorias.emit(categoria);
-      });
+      this._categoriaService.create(value).subscribe(
+        categoria => {
+          this._categoriaService.alterouCategorias.emit(categoria);
+          this._alertService.sucess();
+        },
+        _ => {
+          this._alertService.error();
+        },
+      );
     }
   }
 
