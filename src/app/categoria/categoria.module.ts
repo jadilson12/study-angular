@@ -24,13 +24,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [
-    CategoriaComponent,
-    CategoriaFormComponent,
-    CategoriaListComponent,
-  ],
+  declarations: [CategoriaComponent, CategoriaFormComponent, CategoriaListComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -52,6 +49,7 @@ import { MatCardModule } from '@angular/material/card';
     MatProgressSpinnerModule,
     MatIconModule,
     MatCardModule,
+    SharedModule,
   ],
   providers: [CategoriaService],
   exports: [CategoriaComponent],

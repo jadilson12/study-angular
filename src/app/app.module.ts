@@ -35,6 +35,7 @@ import { SharedModule } from './shared/shared.module';
     NotFaundModule,
     SharedModule,
   ],
+  exports: [SharedModule],
   declarations: [AppComponent],
   providers: [DataService],
   bootstrap: [AppComponent],

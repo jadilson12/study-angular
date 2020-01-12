@@ -15,7 +15,7 @@ import { AlertService } from '../../shared/alert.service';
   styleUrls: ['./produto-form.component.scss'],
 })
 export class ProdutoFormComponent implements OnInit {
-  public produtoform: FormGroup;
+  public form: FormGroup;
   public formEdit: boolean;
   public selected: number;
   public categorias: Observable<Categoria[]>;
@@ -38,14 +38,14 @@ export class ProdutoFormComponent implements OnInit {
   }
 
   private start() {
-    this.produtoform = this._formBuilder.group({
+    this.form = this._formBuilder.group({
       id: [''],
-      nome: ['', Validators.required],
-      descricao: ['', Validators.required],
+      nome: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
+      descricao: ['', Validators.compose([Validators.required, Validators.maxLength(10)])],
       categoria: [''],
     });
     if (this._data.data) {
-      this.produtoform.patchValue(this._data.data);
+      this.form.patchValue(this._data.data);
 
       this.formEdit = true;
     }
@@ -57,19 +57,19 @@ export class ProdutoFormComponent implements OnInit {
   }
 
   private update() {
-    this._produtoService.edit(this.produtoform).subscribe(
+    this._produtoService.edit(this.form).subscribe(
       res => {
         this._produtoService.alterouProdutos.emit(res);
         this._alertService.sucess();
       },
       _ => {
-        this._alertService.error();
+        this._alertService.error('sasas');
       },
     );
   }
 
   private create() {
-    let value = this.produtoform.value;
+    let value = this.form.value;
 
     // start Temporario apenas para api mock
     const newId = Math.random()
@@ -94,7 +94,7 @@ export class ProdutoFormComponent implements OnInit {
   }
 
   public formClear() {
-    this.produtoform.reset();
+    this.form.reset();
   }
 
   public closeDialog() {

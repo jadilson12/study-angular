@@ -1,4 +1,4 @@
-<form [formGroup]="categoriaform" (ngSubmit)="onSubmit()">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
   <mat-grid-list cols="1" row-height="100px">
     <!-- Cabeçalho da pagina -->
     <mat-card-header class="card-heard">
@@ -7,9 +7,16 @@
     <div class="controles-container">
       <mat-form-field>
         <input formControlName="nome" matInput placeholder="Nome" />
+        <mat-error>
+          <app-message-error [field]="form.controls.nome" name="Nome"></app-message-error>
+        </mat-error>
       </mat-form-field>
+
       <mat-form-field>
         <input formControlName="descricao" matInput placeholder="Descrição" />
+        <mat-error>
+          <app-message-error [field]="form.controls.descricao" name="Descrição"></app-message-error>
+        </mat-error>
       </mat-form-field>
     </div>
     <div class="form-footer">
@@ -19,13 +26,13 @@
       <button
         mat-raised-button
         color="warn"
-        [disabled]="!categoriaform.dirty"
+        [disabled]="!form.dirty"
         (click)="formClear()"
         *ngIf="!formEdit"
       >
         Limpar
       </button>
-      <button mat-raised-button color="primary" type="submit" [disabled]="!categoriaform.valid">
+      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">
         Salvar
       </button>
     </div>

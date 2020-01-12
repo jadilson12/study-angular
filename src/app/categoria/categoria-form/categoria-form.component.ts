@@ -12,7 +12,7 @@ import { AlertService } from '../../shared/alert.service';
   styleUrls: ['./categoria-form.component.scss'],
 })
 export class CategoriaFormComponent implements OnInit {
-  public categoriaform: FormGroup;
+  public form: FormGroup;
   public formEdit: boolean;
 
   public categoriaAdicionada = new EventEmitter();
@@ -31,13 +31,13 @@ export class CategoriaFormComponent implements OnInit {
   }
 
   private start() {
-    this.categoriaform = this._formBuilder.group({
-      nome: ['', Validators.required],
-      descricao: ['', Validators.required],
+    this.form = this._formBuilder.group({
+      nome: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
+      descricao: ['', Validators.compose([Validators.required, Validators.maxLength(10)])],
       id: '',
     });
     if (this._data.data) {
-      this.categoriaform.patchValue(this._data.data);
+      this.form.patchValue(this._data.data);
 
       this.formEdit = true;
     }
@@ -49,7 +49,7 @@ export class CategoriaFormComponent implements OnInit {
   }
 
   private update() {
-    this._categoriaService.edit(this.categoriaform).subscribe(
+    this._categoriaService.edit(this.form).subscribe(
       res => {
         this._categoriaService.alterouCategorias.emit(res);
         this._alertService.sucess();
@@ -61,14 +61,14 @@ export class CategoriaFormComponent implements OnInit {
   }
 
   private create() {
-    let value = this.categoriaform.value;
+    let value = this.form.value;
 
     // start Temporario apenas para api mock
     const newId = Math.random()
       .toString(36)
       .substr(2, 1);
     // end
-    if (this.categoriaform.valid) {
+    if (this.form.valid) {
       value = Object.assign(value, { id: newId });
       this._categoriaService.create(value).subscribe(
         categoria => {
@@ -87,7 +87,7 @@ export class CategoriaFormComponent implements OnInit {
   }
 
   public formClear() {
-    this.categoriaform.reset();
+    this.form.reset();
   }
 
   public closeDialog() {
