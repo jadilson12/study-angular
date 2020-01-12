@@ -16,7 +16,7 @@ import { AlertService } from '../../shared/alert.service';
 })
 export class ProdutoFormComponent implements OnInit {
   public form: FormGroup;
-  public formEdit: boolean;
+  public isFormEdit: boolean;
   public selected: number;
   public categorias: Observable<Categoria[]>;
 
@@ -47,12 +47,12 @@ export class ProdutoFormComponent implements OnInit {
     if (this._data.data) {
       this.form.patchValue(this._data.data);
 
-      this.formEdit = true;
+      this.isFormEdit = true;
     }
   }
 
   public onSubmit() {
-    this.formEdit ? this.update() : this.create();
+    this.isFormEdit ? this.update() : this.create();
     this.closeDialog();
   }
 
@@ -90,7 +90,7 @@ export class ProdutoFormComponent implements OnInit {
   }
 
   public isEdit() {
-    return this.formEdit ? 'Atualizar' : 'Criar';
+    return this.isFormEdit ? 'Atualizar' : 'Criar';
   }
 
   public formClear() {

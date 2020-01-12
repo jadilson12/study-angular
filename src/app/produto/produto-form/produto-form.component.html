@@ -26,24 +26,12 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-
-      <div class="form-footer">
-        <button mat-raised-button color="secundary" type="button" (click)="closeDialog()">
-          Fechar
-        </button>
-        <button
-          mat-raised-button
-          color="warn"
-          (click)="formClear()"
-          *ngIf="!formEdit"
-          [disabled]="!form.dirty"
-        >
-          Limpar
-        </button>
-        <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">
-          Salvar
-        </button>
-      </div>
+      <app-footer-form
+        [nameForm]="form"
+        [isFormEdit]="isFormEdit"
+        (closeForm)="closeDialog()"
+        (clearForm)="formClear()"
+      ></app-footer-form>
     </div>
   </div>
 </form>

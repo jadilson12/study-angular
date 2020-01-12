@@ -25,6 +25,7 @@ import { ProdutoListComponent } from './produto-list/produto-list.component';
 import { ProdutoComponent } from './produto.component';
 import { ProdutoService } from './produto.service';
 import { SharedModule } from '../shared/shared.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [ProdutoFormComponent, ProdutoListComponent, ProdutoComponent],
@@ -33,6 +34,8 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     RouterModule,
     HttpClientModule,
+
+    SharedModule,
 
     MatGridListModule,
     MatButtonModule,
@@ -51,7 +54,7 @@ import { SharedModule } from '../shared/shared.module';
     MatCardModule,
     MatToolbarModule,
     MatButtonModule,
-    SharedModule,
+    MatTooltipModule,
   ],
   providers: [ProdutoService],
   exports: [ProdutoComponent],
