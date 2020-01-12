@@ -8,6 +8,7 @@ import { FormGroup } from '@angular/forms';
   encapsulation: ViewEncapsulation.None,
 })
 export class ButtonTableListComponent implements OnInit {
+  item: any;
   @Input() nameForm: FormGroup;
   @Output() openEditBnt: EventEmitter<any> = new EventEmitter();
   @Output() deleteBtn: EventEmitter<any> = new EventEmitter();

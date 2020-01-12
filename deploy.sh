@@ -4,7 +4,7 @@
 set -e
 
 # build
-# ng build --prod --base-href https://jadilson12.github.io/demo/
+ng build --prod --base-href https://jadilson12.github.io/demo/
 # ng --dir=dist/study
 
 # navigate into the build output directory
@@ -19,5 +19,5 @@ git checkout -b gh-pages
 git push -f git@github.com:jadilson12/demo gh-pages
 
 cd ../../
-ls
-# rm -rf dist/study
+
+rm -rf dist/study

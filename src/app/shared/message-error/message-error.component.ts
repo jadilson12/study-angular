@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-message-error',
@@ -8,7 +7,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./message-error.component.scss'],
 })
 export class MessageErrorComponent {
-  @Input() field: Observable<FormGroup>;
+  @Input() field: FormGroup;
   @Input() name: string;
   constructor() {}
 }

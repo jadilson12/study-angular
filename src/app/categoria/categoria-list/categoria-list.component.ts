@@ -4,6 +4,7 @@ import { CategoriaService } from '../categoria.service';
 import { CategoriaFormComponent } from '../categoria-form/categoria-form.component';
 import { DialogService } from '../../shared/dialog.service';
 import { AlertService } from '../../shared/alert.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-categoria-list',
@@ -18,9 +19,11 @@ export class CategoriaListComponent implements OnInit {
     private categoriaService: CategoriaService,
     private dialogService: DialogService,
     private _alertService: AlertService,
+    private _title: Title,
   ) {}
 
   ngOnInit() {
+    this._title.setTitle('Lista de Categorias');
     this.getCategorias();
     this.categoriaService.alterouCategorias.subscribe((_: any) => {
       this.getCategorias();

@@ -5,6 +5,7 @@ import { ProdutoFormComponent } from '../produto-form/produto-form.component';
 import { DialogService } from './../../shared/dialog.service';
 import { Categoria } from 'src/app/categoria/categoria';
 import { AlertService } from '../../shared/alert.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-produto-list',
@@ -20,9 +21,11 @@ export class ProdutoListComponent implements OnInit {
     private produtoService: ProdutoService,
     private dialogService: DialogService,
     private _alertService: AlertService,
+    private _title: Title,
   ) {}
 
   ngOnInit() {
+    this._title.setTitle('Lista de produtos');
     this.getProdutos();
     this.produtoService.alterouProdutos.subscribe((_: any) => {
       this.getProdutos();
