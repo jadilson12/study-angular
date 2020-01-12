@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import 'zone.js/dist/zone-testing';
+import { SidenavService } from './sidenav.service';
 
 import { SidenavComponent } from './sidenav.component';
 
@@ -8,9 +10,8 @@ describe('SidenavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SidenavComponent ]
-    })
-    .compileComponents();
+      declarations: [SidenavComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -50,8 +50,7 @@
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
-    "no-unused-expression": true,
-    "no-unbound-method": true
+    "no-unused-expression": true
   },
   "rulesDirectory": ["codelyzer"]
 }

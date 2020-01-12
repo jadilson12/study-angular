@@ -8,8 +8,8 @@ export class DialogService {
   dialogRef: any;
   constructor(public dialog: MatDialog) {}
 
-  openDialog(component: any, data: any) {
-    this.dialogRef = this.dialog.open(component, { data: { data: data } });
+  openDialog(component: any, dataf: any) {
+    this.dialogRef = this.dialog.open(component, { data: { data: dataf } });
   }
 
   closeDialog() {

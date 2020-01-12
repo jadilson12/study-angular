@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
+import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,14 +19,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { ProdutoFormComponent } from './produto-form/produto-form.component';
 import { ProdutoListComponent } from './produto-list/produto-list.component';
 import { ProdutoComponent } from './produto.component';
 import { ProdutoService } from './produto.service';
 import { SharedModule } from '../shared/shared.module';
-import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [ProdutoFormComponent, ProdutoListComponent, ProdutoComponent],

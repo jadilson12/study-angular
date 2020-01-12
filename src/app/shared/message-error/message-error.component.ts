@@ -9,6 +9,6 @@ import { Observable } from 'rxjs';
 })
 export class MessageErrorComponent {
   @Input() field: Observable<FormGroup>;
-  @Input() name: string = '';
+  @Input() name: string;
   constructor() {}
 }

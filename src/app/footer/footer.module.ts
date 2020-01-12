@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 
 import { FooterComponent } from './footer.component';
-
 @NgModule({
   declarations: [FooterComponent],
   imports: [CommonModule, MatCardModule],

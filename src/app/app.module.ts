@@ -19,6 +19,7 @@ import { SharedModule } from './shared/shared.module';
   imports: [
     LayoutModule,
     BrowserModule,
+    ToolbarModule,
     BrowserAnimationsModule,
     HttpClientModule,
 
@@ -27,7 +28,6 @@ import { SharedModule } from './shared/shared.module';
       passThruUnknownUrl: true,
       put204: false, // return entity after PUT/update
     }),
-    ToolbarModule,
     SideNavModule,
     FooterModule,
     HomeModule,
@@ -35,7 +35,7 @@ import { SharedModule } from './shared/shared.module';
     NotFaundModule,
     SharedModule,
   ],
-  exports: [SharedModule],
+  exports: [SharedModule, ToolbarModule],
   declarations: [AppComponent],
   providers: [DataService],
   bootstrap: [AppComponent],
