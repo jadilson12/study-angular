@@ -25,6 +25,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { SharedModule } from '../shared/shared.module';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [CategoriaComponent, CategoriaFormComponent, CategoriaListComponent],
@@ -33,6 +34,8 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
+
+    SharedModule,
 
     MatGridListModule,
     MatButtonModule,
@@ -49,7 +52,7 @@ import { SharedModule } from '../shared/shared.module';
     MatProgressSpinnerModule,
     MatIconModule,
     MatCardModule,
-    SharedModule,
+    MatTooltipModule,
   ],
   providers: [CategoriaService],
   exports: [CategoriaComponent],

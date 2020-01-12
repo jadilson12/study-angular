@@ -13,7 +13,7 @@ import { AlertService } from '../../shared/alert.service';
 })
 export class CategoriaFormComponent implements OnInit {
   public form: FormGroup;
-  public formEdit: boolean;
+  public isFormEdit: boolean;
 
   public categoriaAdicionada = new EventEmitter();
 
@@ -39,12 +39,12 @@ export class CategoriaFormComponent implements OnInit {
     if (this._data.data) {
       this.form.patchValue(this._data.data);
 
-      this.formEdit = true;
+      this.isFormEdit = true;
     }
   }
 
   public onSubmit() {
-    this.formEdit ? this.update() : this.create();
+    this.isFormEdit ? this.update() : this.create();
     this.closeDialog();
   }
 
@@ -83,7 +83,7 @@ export class CategoriaFormComponent implements OnInit {
   }
 
   public isEdit() {
-    return this.formEdit ? 'Atualizar' : 'Criar';
+    return this.isFormEdit ? 'Atualizar' : 'Criar';
   }
 
   public formClear() {

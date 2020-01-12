@@ -19,22 +19,11 @@
         </mat-error>
       </mat-form-field>
     </div>
-    <div class="form-footer">
-      <button mat-raised-button type="button" color="secundary" (click)="closeDialog()">
-        Fechar
-      </button>
-      <button
-        mat-raised-button
-        color="warn"
-        [disabled]="!form.dirty"
-        (click)="formClear()"
-        *ngIf="!formEdit"
-      >
-        Limpar
-      </button>
-      <button mat-raised-button color="primary" type="submit" [disabled]="!form.valid">
-        Salvar
-      </button>
-    </div>
+    <app-footer-form
+      [nameForm]="form"
+      [isFormEdit]="isFormEdit"
+      (closeForm)="closeDialog()"
+      (clearForm)="formClear()"
+    ></app-footer-form>
   </mat-grid-list>
 </form>
