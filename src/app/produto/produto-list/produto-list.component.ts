@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ProdutoService } from '../produto.service';
 import { ProdutoFormComponent } from '../produto-form/produto-form.component';
-import { DialogService } from '../../shared/dialog.service';
+import { DialogService } from './../../shared/dialog.service';
 import { Categoria } from 'src/app/categoria/categoria';
 import { AlertService } from '../../shared/alert.service';
 
@@ -46,7 +46,7 @@ export class ProdutoListComponent implements OnInit {
     );
   }
 
-  openDialog(produto: any): void {
+  openDialog(produto: any = null): void {
     this.dialogService.openDialog(ProdutoFormComponent, produto);
   }
   onNoClick() {

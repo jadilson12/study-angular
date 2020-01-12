@@ -16,7 +16,7 @@ import { AlertService } from '../../shared/alert.service';
 })
 export class ProdutoFormComponent implements OnInit {
   public produtoform: FormGroup;
-  private formEdit: boolean;
+  public formEdit: boolean;
   public selected: number;
   public categorias: Observable<Categoria[]>;
 

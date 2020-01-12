@@ -38,7 +38,7 @@ export class CategoriaListComponent implements OnInit {
     });
   }
 
-  openDialog(categoria: any): void {
+  openDialog(categoria: any = null): void {
     this.dialogService.openDialog(CategoriaFormComponent, categoria);
   }
   onNoClick() {

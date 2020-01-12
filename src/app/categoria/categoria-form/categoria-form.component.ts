@@ -13,7 +13,7 @@ import { AlertService } from '../../shared/alert.service';
 })
 export class CategoriaFormComponent implements OnInit {
   public categoriaform: FormGroup;
-  private formEdit: boolean;
+  public formEdit: boolean;
 
   public categoriaAdicionada = new EventEmitter();
 
