@@ -10,8 +10,7 @@ import { CategoriaFormComponent } from './categoria/categoria-form/categoria-for
 import { ProdutoFormComponent } from './produto/produto-form/produto-form.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'produtos', component: ProdutoComponent },
   { path: 'produto/novo', component: ProdutoFormComponent },
   { path: 'categorias', component: CategoriaComponent },
