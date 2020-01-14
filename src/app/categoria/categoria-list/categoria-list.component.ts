@@ -12,12 +12,12 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./categoria-list.component.scss'],
 })
 export class CategoriaListComponent implements OnInit {
-  displayedColumns = ['id', 'nome', 'descricao', 'acoes'];
+  displayedColumns = ['nome', 'descricao', 'acoes'];
   dataSource: [];
 
   constructor(
-    private categoriaService: CategoriaService,
-    private dialogService: DialogService,
+    private _categoriaService: CategoriaService,
+    private _dialogService: DialogService,
     private _alertService: AlertService,
     private _title: Title,
   ) {}
@@ -25,26 +25,27 @@ export class CategoriaListComponent implements OnInit {
   ngOnInit() {
     this._title.setTitle('Lista de Categorias');
     this.getCategorias();
-    this.categoriaService.alterouCategorias.subscribe((_: any) => {
+    this._categoriaService.alterouCategorias.subscribe((_: any) => {
       this.getCategorias();
     });
   }
 
   getCategorias() {
-    this.categoriaService.getCategorias().subscribe(data => {
+    this._categoriaService.getCategorias().subscribe(data => {
       this.dataSource = data;
     });
   }
   delete(categoria: any) {
-    this.categoriaService.deleteCategoria(categoria.id).subscribe(() => {
+    this._categoriaService.deleteCategoria(categoria.id).subscribe(() => {
       this.getCategorias(), this._alertService.sucess();
     });
   }
 
   openDialog(categoria: any = null): void {
-    this.dialogService.openDialog(CategoriaFormComponent, categoria);
+    this._dialogService.openDialog(CategoriaFormComponent, categoria);
   }
+
   onNoClick() {
-    this.dialogService.closeDialog();
+    this._dialogService.closeDialog();
   }
 }

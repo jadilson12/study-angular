@@ -6,7 +6,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogService } from 'src/app/shared/dialog.service';
 import { CategoriaService } from './../../categoria/categoria.service';
 import { Observable } from 'rxjs';
-import { Categoria } from 'src/app/categoria/categoria';
+import { Categoria } from 'src/app/categoria/categoria.model';
 import { AlertService } from '../../shared/alert.service';
 
 @Component({
@@ -15,87 +15,78 @@ import { AlertService } from '../../shared/alert.service';
   styleUrls: ['./produto-form.component.scss'],
 })
 export class ProdutoFormComponent implements OnInit {
-  public form: FormGroup;
-  public isFormEdit: boolean;
-  public selected: number;
-  public categorias: Observable<Categoria[]>;
+  form: FormGroup;
+  isFormEdit: boolean;
+  selected: number;
+  categorias: Observable<Categoria[]>;
 
-  public produtoAdicionada = new EventEmitter();
+  produtoAdicionada = new EventEmitter();
 
   constructor(
     private _categoriaService: CategoriaService,
     private _formBuilder: FormBuilder,
     private _produtoService: ProdutoService,
-    @Inject(MAT_DIALOG_DATA) public _data: any,
-    public dialogRef: MatDialogRef<ProdutoFormComponent>,
-    private dialogService: DialogService,
+    public _dialogRef: MatDialogRef<ProdutoFormComponent>,
+    private _dialogService: DialogService,
     private _alertService: AlertService,
+    @Inject(MAT_DIALOG_DATA) public _data: any,
   ) {}
 
-  public ngOnInit() {
+  ngOnInit() {
     this.categorias = this._categoriaService.getCategorias();
-    this.start();
+    this.edit();
   }
-
-  private start() {
-    this.form = this._formBuilder.group({
-      id: [''],
-      nome: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
-      descricao: ['', Validators.compose([Validators.required, Validators.maxLength(10)])],
-      categoria: [''],
-    });
-    if (this._data.data) {
-      this.form.patchValue(this._data.data);
-
-      this.isFormEdit = true;
-    }
-  }
-
-  public onSubmit() {
+  onSubmit() {
     this.isFormEdit ? this.update() : this.create();
     this.closeDialog();
   }
 
-  private update() {
+  edit() {
+    this.form = this._formBuilder.group({
+      nome: ['', [Validators.required, Validators.minLength(3)]],
+      descricao: ['', [Validators.required, Validators.maxLength(10)]],
+      categoria: [''],
+      id: [''],
+    });
+    if (this._data.data) {
+      this.form.patchValue(this._data.data);
+      this.isFormEdit = true;
+    }
+  }
+
+  update() {
     this._produtoService.edit(this.form).subscribe(
       res => {
         this._produtoService.alterouProdutos.emit(res);
         this._alertService.sucess();
       },
-      _ => {
-        this._alertService.error('sasas');
+      error => {
+        this._alertService.error(error.body.error);
       },
     );
   }
 
-  private create() {
-    let value = this.form.value;
-
-    // start Temporario apenas para api mock
-    const newId = Math.floor(Math.random() * 101);
-    // end
-
-    value = Object.assign(value, { id: newId });
-    this._produtoService.create(value).subscribe(
+  create() {
+    this._produtoService.create(this.form.value).subscribe(
       res => {
         this._produtoService.alterouProdutos.emit(res);
         this._alertService.sucess();
       },
-      _ => {
-        this._alertService.error();
+      error => {
+        this._alertService.error(error.body.error);
       },
     );
   }
 
-  public isEdit() {
+  isEdit() {
     return this.isFormEdit ? 'Atualizar' : 'Criar';
   }
 
-  public formClear() {
+  formClear() {
     this.form.reset();
   }
 
-  public closeDialog() {
-    this.dialogService.closeDialog();
+  closeDialog() {
+    this._dialogService.closeDialog();
   }
 }

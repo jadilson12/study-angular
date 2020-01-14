@@ -12,10 +12,10 @@ import { AlertService } from '../../shared/alert.service';
   styleUrls: ['./categoria-form.component.scss'],
 })
 export class CategoriaFormComponent implements OnInit {
-  public form: FormGroup;
-  public isFormEdit: boolean;
+  form: FormGroup;
+  isFormEdit: boolean;
 
-  public categoriaAdicionada = new EventEmitter();
+  categoriaAdicionada = new EventEmitter();
 
   constructor(
     private _alertService: AlertService,
@@ -26,69 +26,60 @@ export class CategoriaFormComponent implements OnInit {
     private dialogService: DialogService,
   ) {}
 
-  public ngOnInit() {
-    this.start();
+  ngOnInit() {
+    this.edit();
   }
 
-  private start() {
+  edit() {
     this.form = this._formBuilder.group({
-      nome: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
-      descricao: ['', Validators.compose([Validators.required, Validators.maxLength(10)])],
-      id: '',
+      nome: ['', [Validators.required, Validators.minLength(3)]],
+      descricao: ['', [Validators.required, Validators.maxLength(10)]],
+      id: [''],
     });
     if (this._data.data) {
       this.form.patchValue(this._data.data);
-
       this.isFormEdit = true;
     }
   }
 
-  public onSubmit() {
+  onSubmit() {
     this.isFormEdit ? this.update() : this.create();
     this.closeDialog();
   }
 
-  private update() {
+  update() {
     this._categoriaService.edit(this.form).subscribe(
       res => {
         this._categoriaService.alterouCategorias.emit(res);
         this._alertService.sucess();
       },
-      _ => {
-        this._alertService.error();
+      error => {
+        this._alertService.error(error.body.error);
       },
     );
   }
 
-  private create() {
-    let value = this.form.value;
-
-    // start Temporario apenas para api mock
-    const newId = Math.floor(Math.random() * 101);
-    // end
-    if (this.form.valid) {
-      value = Object.assign(value, { id: newId });
-      this._categoriaService.create(value).subscribe(
-        categoria => {
-          this._categoriaService.alterouCategorias.emit(categoria);
-          this._alertService.sucess();
-        },
-        _ => {
-          this._alertService.error();
-        },
-      );
-    }
+  create() {
+    this._categoriaService.create(this.form.value).subscribe(
+      categoria => {
+        this._categoriaService.alterouCategorias.emit(categoria);
+        this._alertService.sucess();
+      },
+      error => {
+        this._alertService.error(error.body.error);
+      },
+    );
   }
 
-  public isEdit() {
+  isEdit() {
     return this.isFormEdit ? 'Atualizar' : 'Criar';
   }
 
-  public formClear() {
+  formClear() {
     this.form.reset();
   }
 
-  public closeDialog() {
+  closeDialog() {
     this.dialogService.closeDialog();
   }
 }

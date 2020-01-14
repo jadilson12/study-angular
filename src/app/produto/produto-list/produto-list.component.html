@@ -7,12 +7,6 @@
     </a>
   </mat-card-header>
   <mat-table #table [dataSource]="dataSource">
-    <!-- id Column -->
-    <ng-container matColumnDef="id">
-      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-      <mat-cell *matCellDef="let item"> {{ item.id }} </mat-cell>
-    </ng-container>
-
     <!-- Nome Column -->
     <ng-container matColumnDef="nome">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
