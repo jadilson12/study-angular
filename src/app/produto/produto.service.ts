@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-import { Produtos } from './produto.model';
+import { ProdutoModel } from './produto.model';
 import { httpOptions } from '../config/httpOptions';
 import { environment } from 'src/environments/environment';
 
@@ -21,12 +21,12 @@ export class ProdutoService {
     return this._http.get(this.apiUrl);
   }
 
-  create(produto: Produtos): Observable<Produtos> {
-    return this._http.post<Produtos>(this.apiUrl, produto, httpOptions);
+  create(produto: ProdutoModel): Observable<ProdutoModel> {
+    return this._http.post<ProdutoModel>(this.apiUrl, produto, httpOptions);
   }
 
-  edit(produto: FormGroup): Observable<Produtos> {
-    return this._http.put<Produtos>(
+  edit(produto: FormGroup): Observable<ProdutoModel> {
+    return this._http.put<ProdutoModel>(
       `${this.apiUrl}/${produto.value.id}`,
       produto.value,
       httpOptions,

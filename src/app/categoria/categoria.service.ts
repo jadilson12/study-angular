@@ -3,7 +3,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { httpOptions } from '../config/httpOptions';
-import { Categoria } from './categoria.model';
+import { CategoriaModel } from './categoria.model';
 import { environment } from './../../environments/environment';
 
 @Injectable({
@@ -20,12 +20,12 @@ export class CategoriaService {
     return this._http.get(this.apiUrl);
   }
 
-  create(categoria: Categoria): Observable<Categoria> {
-    return this._http.post<Categoria>(this.apiUrl, categoria, httpOptions);
+  create(categoria: CategoriaModel): Observable<CategoriaModel> {
+    return this._http.post<CategoriaModel>(this.apiUrl, categoria, httpOptions);
   }
 
-  edit(categoria: FormGroup): Observable<Categoria> {
-    return this._http.put<Categoria>(
+  edit(categoria: FormGroup): Observable<CategoriaModel> {
+    return this._http.put<CategoriaModel>(
       `${this.apiUrl}/${categoria.value.id}`,
       categoria.value,
       httpOptions,

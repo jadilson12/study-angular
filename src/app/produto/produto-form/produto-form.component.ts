@@ -6,7 +6,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DialogService } from 'src/app/shared/dialog.service';
 import { CategoriaService } from './../../categoria/categoria.service';
 import { Observable } from 'rxjs';
-import { Categoria } from 'src/app/categoria/categoria.model';
+import { CategoriaModel } from 'src/app/categoria/categoria.model';
 import { AlertService } from '../../shared/alert.service';
 
 @Component({
@@ -18,7 +18,7 @@ export class ProdutoFormComponent implements OnInit {
   form: FormGroup;
   isFormEdit: boolean;
   selected: number;
-  categorias: Observable<Categoria[]>;
+  categorias: Observable<CategoriaModel[]>;
 
   produtoAdicionada = new EventEmitter();
 

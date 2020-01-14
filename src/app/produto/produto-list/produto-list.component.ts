@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 import { ProdutoService } from '../produto.service';
 import { ProdutoFormComponent } from '../produto-form/produto-form.component';
 import { DialogService } from './../../shared/dialog.service';
-import { Categoria } from 'src/app/categoria/categoria.model';
+import { CategoriaModel } from 'src/app/categoria/categoria.model';
 import { AlertService } from '../../shared/alert.service';
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-produto-list',
@@ -13,7 +13,7 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./produto-list.component.scss'],
 })
 export class ProdutoListComponent implements OnInit {
-  categorias: Categoria[];
+  categorias: CategoriaModel[];
   displayedColumns = ['nome', 'descricao', 'categoria', 'acoes'];
   dataSource: [];
 

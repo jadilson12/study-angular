@@ -26,6 +26,7 @@ import { CategoriaFormComponent } from './categoria-form/categoria-form.componen
 import { CategoriaListComponent } from './categoria-list/categoria-list.component';
 import { CategoriaComponent } from './categoria.component';
 import { CategoriaService } from './categoria.service';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [CategoriaComponent, CategoriaFormComponent, CategoriaListComponent],
@@ -34,8 +35,6 @@ import { CategoriaService } from './categoria.service';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule,
-
-    SharedModule,
 
     MatGridListModule,
     MatButtonModule,
@@ -53,8 +52,10 @@ import { CategoriaService } from './categoria.service';
     MatIconModule,
     MatCardModule,
     MatTooltipModule,
+
+    SharedModule,
   ],
   providers: [CategoriaService],
-  exports: [CategoriaComponent],
+  exports: [CategoriaComponent, StoreModule],
 })
 export class CategoriaModule {}

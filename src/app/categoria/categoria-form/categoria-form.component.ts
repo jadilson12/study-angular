@@ -21,9 +21,9 @@ export class CategoriaFormComponent implements OnInit {
     private _alertService: AlertService,
     private _formBuilder: FormBuilder,
     private _categoriaService: CategoriaService,
-    public dialogRef: MatDialogRef<CategoriaFormComponent>,
+    public _dialogRef: MatDialogRef<CategoriaFormComponent>,
+    private _dialogService: DialogService,
     @Inject(MAT_DIALOG_DATA) public _data: any,
-    private dialogService: DialogService,
   ) {}
 
   ngOnInit() {
@@ -80,6 +80,6 @@ export class CategoriaFormComponent implements OnInit {
   }
 
   closeDialog() {
-    this.dialogService.closeDialog();
+    this._dialogService.closeDialog();
   }
 }
