@@ -1,6 +1,5 @@
 import { Component, OnInit, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-
 @Component({
   selector: 'app-button-table-list',
   templateUrl: './button-table-list.component.html',
