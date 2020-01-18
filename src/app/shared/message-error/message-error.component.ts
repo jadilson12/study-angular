@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-message-error',
@@ -7,7 +7,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./message-error.component.scss'],
 })
 export class MessageErrorComponent {
-  @Input() field: FormGroup;
+  @Input() field: FormControl;
   @Input() name: string;
   constructor() {}
 }
