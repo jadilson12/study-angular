@@ -1,35 +1,63 @@
-import { TestBed, async } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { DataService } from './data.service';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { ProdutoComponent } from './produto/produto.component';
+import { ProdutoFormComponent } from './produto/produto-form/produto-form.component';
+import { CategoriaComponent } from './categoria/categoria.component';
+import { CategoriaFormComponent } from './categoria/categoria-form/categoria-form.component';
+import { NotFaundComponent } from './not-faund/not-faund.component';
+import { SideNavModule } from './sidenav/sidenav.module';
+import { FooterModule } from './footer/footer.module';
+import { HomeModule } from './home/home.module';
+import { ProdutoModule } from './produto/produto.module';
+import { NotFaundModule } from './not-faund/not-faund.module';
+import { SharedModule } from './shared/shared.module';
+import { LayoutModule } from '@angular/cdk/layout';
+import { BrowserModule } from '@angular/platform-browser';
+import { ToolbarModule } from './toolbar/toolbar.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      declarations: [AppComponent],
       imports: [
-        RouterTestingModule
+        LayoutModule,
+        BrowserModule,
+        ToolbarModule,
+        BrowserAnimationsModule,
+        HttpClientTestingModule,
+
+        HttpClientInMemoryWebApiModule.forRoot(DataService, {
+          dataEncapsulation: false,
+          passThruUnknownUrl: true,
+          put204: false, // return entity after PUT/update
+        }),
+        SideNavModule,
+        FooterModule,
+        HomeModule,
+        ProdutoModule,
+        NotFaundModule,
+        SharedModule,
       ],
-      declarations: [
-        AppComponent
-      ],
+
+      providers: [DataService],
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
+  it('Deve ser criado o app', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'study'`, () => {
+  it(`Deve ser criado um titulo  com nome 'Loja'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('study');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('study app is running!');
+    expect(app.title).toEqual('Loja');
   });
 });

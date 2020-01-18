@@ -15,11 +15,13 @@ import { NotFaundModule } from './not-faund/not-faund.module';
 import { DataService } from './data.service';
 
 import { SharedModule } from './shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     LayoutModule,
     BrowserModule,
     ToolbarModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
 
