@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-import { ProdutoService } from '../produto.service';
 import { ProdutoFormComponent } from '../produto-form/produto-form.component';
+import { ProdutoService } from '../produto.service';
 import { DialogService } from './../../shared/dialog.service';
 import { CategoriaModel } from 'src/app/categoria/categoria.model';
 import { AlertService } from '../../shared/alert.service';

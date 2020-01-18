@@ -43,7 +43,7 @@ export class ProdutoFormComponent implements OnInit {
 
   edit() {
     this.form = this._formBuilder.group({
-      nome: ['', [Validators.required, Validators.minLength(3)]],
+      nome: ['', [Validators.required, Validators.minLength(0)]],
       descricao: ['', [Validators.required, Validators.maxLength(10)]],
       categoria: [''],
       id: [''],
