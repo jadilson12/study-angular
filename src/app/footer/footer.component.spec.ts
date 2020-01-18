@@ -1,25 +1,36 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FooterComponent } from './footer.component';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
 
-describe('FooterComponent', () => {
-  let component: FooterComponent;
-  let fixture: ComponentFixture<FooterComponent>;
+function setup() {
+  const fixture = TestBed.createComponent(FooterComponent);
+  const component = fixture.componentInstance;
 
-  beforeEach(async(() => {
+  return { fixture, component };
+}
+describe('#Footer Component', () => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ FooterComponent ]
-    })
-    .compileComponents();
-  }));
+      declarations: [FooterComponent],
+      imports: [CommonModule, MatCardModule],
+    }).compileComponents();
+  });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FooterComponent);
-    component = fixture.componentInstance;
+    const { fixture } = setup();
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('Deve ser criado', () => {
+    const { component } = setup();
+    expect(component).toBeDefined();
+  });
+
+  it('Deve um texto de descrição', () => {
+    const { fixture } = setup();
+    const el = fixture.debugElement.nativeElement;
+    expect(el.textContent).toBe(' CRUD feito com Angular 8.x');
   });
 });
