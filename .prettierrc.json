@@ -2,6 +2,7 @@
   "trailingComma": "all",
   "tabWidth": 2,
   "semi": true,
+  "noUnusedLocals": true,
   "singleQuote": true,
   "printWidth": 100,
   "overrides": [

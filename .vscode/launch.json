@@ -15,6 +15,12 @@
       "name": "Attach to Chrome",
       "port": 9222,
       "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch node",
+      "program": "${workspaceRoot}/node_modules/jasmine-es6/bin/jasmine.js"
     }
   ]
 }
