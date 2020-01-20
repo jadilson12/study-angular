@@ -1,4 +1,4 @@
-import { async, TestBed } from '@angular/core/testing';
+import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 
 import { CategoriaListComponent } from './categoria-list.component';
 import { CommonModule } from '@angular/common';
@@ -26,18 +26,24 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { DialogService } from 'src/app/shared/dialog.service';
 import { AlertService } from 'src/app/shared/alert.service';
 import { Title } from '@angular/platform-browser';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 import { categorias as CATEGORIA_MOCK } from '../mock-categoria';
+import { of } from 'rxjs';
+import { DebugElement } from '@angular/core';
 
 function setup() {
   const fixture = TestBed.createComponent(CategoriaListComponent);
+  const httpTestingController = TestBed.get(HttpTestingController);
   const component = fixture.debugElement.componentInstance;
   const categoriaService = TestBed.get(CategoriaService);
   const diaLogService = TestBed.get(DialogService);
   const alertaService = TestBed.get(AlertService);
+  const httpClient = TestBed.get(HttpClient);
   const title = TestBed.get(Title);
-  const httpTestingController = TestBed.get(HttpTestingController);
 
   return {
+    httpClient,
     fixture,
     component,
     categoriaService,
@@ -48,6 +54,12 @@ function setup() {
   };
 }
 
+const categoriasServiceStub = {
+  get() {
+    const categorias = CATEGORIA_MOCK;
+    return of(categorias);
+  },
+};
 describe('#Categoria List', () => {
   let categoriaService: CategoriaService;
   let diaLogService: DialogService;
@@ -82,32 +94,24 @@ describe('#Categoria List', () => {
 
         SharedModule,
       ],
-      providers: [CategoriaService, DialogService, AlertService, Title],
+      providers: [
+        CategoriaService,
+        DialogService,
+        AlertService,
+        Title,
+        // { provide: CategoriaService, useValue: categoriasServiceStub },
+      ],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    const { fixture, component } = setup();
-    component.getCategorias();
+    const { fixture } = setup();
     fixture.detectChanges();
+
+    categoriaService = TestBed.get(CategoriaService);
   });
 
-  xit('Deve chamar api de categoria', () => {
-    const { categoriaService, httpTestingController } = setup();
-    categoriaService.getCategorias().subscribe(data => {
-      expect(data.mapData).toEqual(CATEGORIA_MOCK);
-    });
-
-    const req = httpTestingController.expectOne(categoriaService.apiUrl);
-
-    expect(req.request.method).toBe('GET');
-
-    req.flush({
-      mapData: CATEGORIA_MOCK,
-    });
-  });
-
-  it('Deve ser criado', () => {
+  it('Deve ser lista categoria', () => {
     const { component } = setup();
     expect(component).toBeTruthy();
   });
@@ -118,9 +122,5 @@ describe('#Categoria List', () => {
     const el = fixture.debugElement.nativeElement;
     const btnAdd = el.querySelector('button');
     expect(btnAdd.textContent).toBe(' Nova categoria ');
-  });
-
-  it('Deve ter paginetes', () => {
-    //
   });
 });

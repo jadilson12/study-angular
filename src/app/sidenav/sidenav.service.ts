@@ -4,7 +4,8 @@ import { Injectable, EventEmitter } from '@angular/core';
   providedIn: 'root',
 })
 export class SidenavService {
-  drawer: boolean;
+  default = true;
+  drawer: boolean = this.default;
 
   mudaDrawer = new EventEmitter();
 

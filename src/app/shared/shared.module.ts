@@ -13,9 +13,16 @@ import { ButtonTableListComponent } from './button-table-list/button-table-list.
 import { DialogService } from './dialog.service';
 import { FooterFormComponent } from './footer-form/footer-form.component';
 import { MessageErrorComponent } from './message-error/message-error.component';
+import { MatCardModule } from '@angular/material/card';
+import { ConfimarDeleteComponent } from './confimar-delete/confimar-delete.component';
 
 @NgModule({
-  declarations: [MessageErrorComponent, FooterFormComponent, ButtonTableListComponent],
+  declarations: [
+    MessageErrorComponent,
+    FooterFormComponent,
+    ButtonTableListComponent,
+    ConfimarDeleteComponent,
+  ],
   imports: [
     CommonModule,
 
@@ -27,8 +34,15 @@ import { MessageErrorComponent } from './message-error/message-error.component';
     MatTooltipModule,
     MatProgressSpinnerModule,
     MatIconModule,
+    MatCardModule,
   ],
-  exports: [MessageErrorComponent, FooterFormComponent, ButtonTableListComponent],
+  exports: [
+    MessageErrorComponent,
+    FooterFormComponent,
+    ButtonTableListComponent,
+    ConfimarDeleteComponent,
+  ],
   providers: [DialogService, AlertService],
+  entryComponents: [ConfimarDeleteComponent],
 })
 export class SharedModule {}

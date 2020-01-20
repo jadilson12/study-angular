@@ -1,0 +1,17 @@
+<mat-grid-list cols="1" row-height="100px">
+  <!-- Cabeçalho da pagina -->
+  <mat-card-header class="card-heard">
+    <mat-card-title>Excuir {{ title }}</mat-card-title>
+  </mat-card-header>
+  <div class="controles-container">
+    <span>Realmente deseja excluir o item, não tem com reveter!</span>
+  </div>
+  <div class="form-footer">
+    <button mat-raised-button type="button" color="secundary" (click)="close()">
+      Fechar
+    </button>
+    <button mat-raised-button color="warn" type="button" (click)="confimar()">
+      Excluir
+    </button>
+  </div>
+</mat-grid-list>

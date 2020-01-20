@@ -28,7 +28,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientInMemoryWebApiModule.forRoot(DataService, {
       dataEncapsulation: false,
       passThruUnknownUrl: true,
-      put204: false, // return entity after PUT/update
+      put204: true, // return entity after PUT/update
     }),
     SideNavModule,
     FooterModule,

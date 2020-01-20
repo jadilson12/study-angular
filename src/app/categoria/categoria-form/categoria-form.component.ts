@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, EventEmitter } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { CategoriaService } from '../categoria.service';
@@ -14,16 +14,15 @@ import { AlertService } from '../../shared/alert.service';
 export class CategoriaFormComponent implements OnInit {
   form: FormGroup;
   isFormEdit: boolean;
-
-  categoriaAdicionada = new EventEmitter();
+  submitted = false;
 
   constructor(
     private _alertService: AlertService,
     private _formBuilder: FormBuilder,
     private _categoriaService: CategoriaService,
+    @Inject(MAT_DIALOG_DATA) public _data: any,
     public _dialogRef: MatDialogRef<CategoriaFormComponent>,
     private _dialogService: DialogService,
-    @Inject(MAT_DIALOG_DATA) public _data: any,
   ) {}
 
   ngOnInit() {
@@ -43,14 +42,20 @@ export class CategoriaFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.isFormEdit ? this.update() : this.create();
+    this.submitted = true;
+    if (this.isFormEdit) {
+      this.update();
+    } else {
+      this.create();
+    }
+
     this.closeDialog();
   }
 
   update() {
     this._categoriaService.edit(this.form).subscribe(
       res => {
-        this._categoriaService.alterouCategorias.emit(res);
+        this._categoriaService.alterouCategoria.emit(res);
         this._alertService.sucess();
       },
       error => {
@@ -60,9 +65,12 @@ export class CategoriaFormComponent implements OnInit {
   }
 
   create() {
+    console.log(this.form.value);
     this._categoriaService.create(this.form.value).subscribe(
       categoria => {
-        this._categoriaService.alterouCategorias.emit(categoria);
+        console.log(categoria);
+        this._categoriaService.alterouCategoria.emit(categoria);
+        this.formClear();
         this._alertService.sucess();
       },
       error => {

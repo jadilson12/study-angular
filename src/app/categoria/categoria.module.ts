@@ -27,6 +27,7 @@ import { CategoriaListComponent } from './categoria-list/categoria-list.componen
 import { CategoriaComponent } from './categoria.component';
 import { CategoriaService } from './categoria.service';
 import { StoreModule } from '@ngrx/store';
+import { DialogService } from '../shared/dialog.service';
 
 @NgModule({
   declarations: [CategoriaComponent, CategoriaFormComponent, CategoriaListComponent],

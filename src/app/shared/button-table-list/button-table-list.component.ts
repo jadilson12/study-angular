@@ -20,6 +20,7 @@ export class ButtonTableListComponent implements OnInit {
   }
 
   delete(iten: any) {
+    console.log(iten);
     this.deleteBtn.emit(iten);
   }
 }

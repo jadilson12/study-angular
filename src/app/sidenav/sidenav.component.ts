@@ -12,7 +12,8 @@ export class SidenavComponent implements OnInit {
   constructor(private sidenavService: SidenavService, private router: Router) {}
 
   ngOnInit() {
-    this.sidenavService.mudaDrawer.subscribe((e: any) => (this.drawer = e));
+    this.drawer = this.sidenavService.default;
+    this.sidenavService.mudaDrawer.subscribe((e: boolean) => (this.drawer = e));
   }
 
   onSelected(item: any) {
