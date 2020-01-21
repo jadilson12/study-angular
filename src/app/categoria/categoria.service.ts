@@ -20,16 +20,12 @@ export class CategoriaService {
     return this._http.get(this.apiUrl);
   }
 
-  create(categoria: any): Observable<any> {
+  createCategoria(categoria: any): Observable<any> {
     return this._http.post(this.apiUrl, categoria, httpOptions);
   }
 
-  edit(categoria: FormGroup): Observable<CategoriaModel> {
-    return this._http.put<CategoriaModel>(
-      `${this.apiUrl}/${categoria.value.id}`,
-      categoria.value,
-      httpOptions,
-    );
+  updateCategoria(categoria: any): Observable<CategoriaModel> {
+    return this._http.put<CategoriaModel>(`${this.apiUrl}/${categoria.id}`, categoria, httpOptions);
   }
 
   deleteCategoria(id: number): Observable<{}> {
