@@ -18,10 +18,10 @@ export class ProdutoListComponent implements OnInit {
   dataSource: [];
 
   constructor(
-    private _produtoService: ProdutoService,
-    private _dialogService: DialogService,
-    private _alertService: AlertService,
-    private _title: Title,
+    private readonly _produtoService: ProdutoService,
+    private readonly _dialogService: DialogService,
+    private readonly _alertService: AlertService,
+    private readonly _title: Title,
   ) {}
 
   ngOnInit() {

@@ -17,12 +17,12 @@ export class CategoriaFormComponent implements OnInit {
   submitted = false;
 
   constructor(
-    private _alertService: AlertService,
-    private _formBuilder: FormBuilder,
-    private _categoriaService: CategoriaService,
+    private readonly _alertService: AlertService,
+    private readonly _formBuilder: FormBuilder,
+    private readonly _categoriaService: CategoriaService,
     @Inject(MAT_DIALOG_DATA) public _data: any,
-    public _dialogRef: MatDialogRef<CategoriaFormComponent>,
-    private _dialogService: DialogService,
+    public readonly _dialogRef: MatDialogRef<CategoriaFormComponent>,
+    private readonly _dialogService: DialogService,
   ) {}
 
   ngOnInit() {

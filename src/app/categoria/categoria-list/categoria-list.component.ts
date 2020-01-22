@@ -7,7 +7,6 @@ import { AlertService } from '../../shared/alert.service';
 import { Title } from '@angular/platform-browser';
 import { CategoriaModel } from '../categoria.model';
 import { ConfimarDeleteComponent } from '../../shared/confimar-delete/confimar-delete.component';
-import { asyncScheduler } from 'rxjs';
 
 @Component({
   selector: 'app-categoria-list',
@@ -21,10 +20,10 @@ export class CategoriaListComponent implements OnInit {
   categoria: CategoriaModel;
 
   constructor(
-    private _categoriaService: CategoriaService,
-    private _dialogService: DialogService,
-    private _alertService: AlertService,
-    private _title: Title,
+    private readonly _categoriaService: CategoriaService,
+    private readonly _dialogService: DialogService,
+    private readonly _alertService: AlertService,
+    private readonly _title: Title,
   ) {}
 
   ngOnInit() {

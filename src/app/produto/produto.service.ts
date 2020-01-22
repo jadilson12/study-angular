@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { ProdutoModel } from './produto.model';
 import { httpOptions } from '../config/httpOptions';
 import { environment } from 'src/environments/environment';
+import { produtos } from './mock-produto';
 
 @Injectable({
   providedIn: 'root',
@@ -25,12 +26,8 @@ export class ProdutoService {
     return this._http.post<ProdutoModel>(this.apiUrl, produto, httpOptions);
   }
 
-  edit(produto: FormGroup): Observable<ProdutoModel> {
-    return this._http.put<ProdutoModel>(
-      `${this.apiUrl}/${produto.value.id}`,
-      produto.value,
-      httpOptions,
-    );
+  edit(produto: ProdutoModel): Observable<ProdutoModel> {
+    return this._http.put<ProdutoModel>(`${this.apiUrl}/${produto.id}`, produto, httpOptions);
   }
 
   deleteProduto(id: number): Observable<{}> {

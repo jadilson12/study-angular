@@ -23,12 +23,12 @@ export class ProdutoFormComponent implements OnInit {
   produtoAdicionada = new EventEmitter();
 
   constructor(
-    private _categoriaService: CategoriaService,
-    private _formBuilder: FormBuilder,
-    private _produtoService: ProdutoService,
-    public _dialogRef: MatDialogRef<ProdutoFormComponent>,
-    private _dialogService: DialogService,
-    private _alertService: AlertService,
+    private readonly _categoriaService: CategoriaService,
+    private readonly _formBuilder: FormBuilder,
+    private readonly _produtoService: ProdutoService,
+    public readonly _dialogRef: MatDialogRef<ProdutoFormComponent>,
+    private readonly _dialogService: DialogService,
+    private readonly _alertService: AlertService,
     @Inject(MAT_DIALOG_DATA) public _data: any,
   ) {}
 
@@ -55,7 +55,7 @@ export class ProdutoFormComponent implements OnInit {
   }
 
   update() {
-    this._produtoService.edit(this.form).subscribe(
+    this._produtoService.edit(this.form.value).subscribe(
       res => {
         this._produtoService.alterouProdutos.emit(res);
         this._alertService.sucess();

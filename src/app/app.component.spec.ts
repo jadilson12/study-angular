@@ -1,13 +1,7 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { DataService } from './data.service';
-import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { ProdutoComponent } from './produto/produto.component';
-import { ProdutoFormComponent } from './produto/produto-form/produto-form.component';
-import { CategoriaComponent } from './categoria/categoria.component';
-import { CategoriaFormComponent } from './categoria/categoria-form/categoria-form.component';
-import { NotFaundComponent } from './not-faund/not-faund.component';
+
 import { SideNavModule } from './sidenav/sidenav.module';
 import { FooterModule } from './footer/footer.module';
 import { HomeModule } from './home/home.module';
@@ -21,6 +15,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
+import { Router } from '@angular/router';
+import { browser } from 'protractor';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -33,9 +30,9 @@ describe('AppComponent', () => {
         HttpClientTestingModule,
 
         HttpClientInMemoryWebApiModule.forRoot(DataService, {
-          dataEncapsulation: false,
+          dataEncapsulation: true,
           passThruUnknownUrl: true,
-          put204: false, // return entity after PUT/update
+          put204: true, // return entity after PUT/update
         }),
         SideNavModule,
         FooterModule,
