@@ -29,10 +29,6 @@ export class CategoriaListComponent implements OnInit {
   ngOnInit() {
     this._title.setTitle('Lista de Categorias');
     this.getCategorias();
-    this._categoriaService.alterouCategoria.subscribe(_ => {
-      // this.dataSource = this._categoriaService.categorias;
-      this.getCategorias();
-    });
     this._dialogService.getDelete().subscribe(ok => (ok ? this.delete(this.categoria) : ''));
   }
 

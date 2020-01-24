@@ -2,7 +2,7 @@
   <!-- Cabeçalho da pagina -->
   <mat-card-header class="card-heard">
     <mat-card-title>Produtos</mat-card-title>
-    <a mat-raised-button color="primary" (click)="openDialog()">
+    <a mat-raised-button color="primary" id="btnAddProduto" (click)="openDialog()">
       Novo produto
     </a>
   </mat-card-header>
@@ -29,10 +29,28 @@
     <ng-container matColumnDef="acoes">
       <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
       <mat-cell *matCellDef="let item">
-        <app-button-table-list
-          (openEditBnt)="openDialog(item)"
-          (deleteBtn)="delete(item)"
-        ></app-button-table-list>
+        <button
+          id="btnEdit"
+          mat-button
+          (click)="openDialog(item)"
+          matTooltip="Clique para editar o item"
+          matTooltipPosition="above"
+          matTooltipClass="btn-edit"
+          type="button"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button
+          id="btnDelete"
+          mat-button
+          (click)="openDialogDelete(item)"
+          type="button"
+          matTooltip="Clique para excluir o item"
+          matTooltipClass="btn-delete"
+          matTooltipPosition="above"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
       </mat-cell>
     </ng-container>
 

@@ -57,7 +57,6 @@ export class ProdutoFormComponent implements OnInit {
   update() {
     this._produtoService.edit(this.form.value).subscribe(
       res => {
-        this._produtoService.alterouProdutos.emit(res);
         this._alertService.sucess();
       },
       error => {
@@ -69,7 +68,6 @@ export class ProdutoFormComponent implements OnInit {
   create() {
     this._produtoService.create(this.form.value).subscribe(
       res => {
-        this._produtoService.alterouProdutos.emit(res);
         this._alertService.sucess();
       },
       error => {

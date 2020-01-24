@@ -55,7 +55,6 @@ export class CategoriaFormComponent implements OnInit {
   update() {
     this._categoriaService.updateCategoria(this.form.value).subscribe(
       res => {
-        this._categoriaService.alterouCategoria.emit(res);
         this._alertService.sucess();
       },
       error => {
@@ -67,8 +66,6 @@ export class CategoriaFormComponent implements OnInit {
   create() {
     this._categoriaService.createCategoria(this.form.value).subscribe(
       categoria => {
-        console.log(categoria);
-        this._categoriaService.alterouCategoria.emit(categoria);
         this.formClear();
         this._alertService.sucess();
       },

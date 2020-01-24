@@ -32,7 +32,9 @@ module.exports = function(config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['ChromeHeadless'],
+    // ['Chrome'], with window open chrome
+    // ['ChromeHeadless'],  not open window chrome
+    browsers: ['ChromeHeadless'], //
     singleRun: false,
     restartOnFileChange: true,
   });

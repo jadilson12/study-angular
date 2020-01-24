@@ -7,7 +7,7 @@
     "build": "node --max_old_space_size=4048 ./node_modules/@angular/cli/bin/ng serve",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "test-e2e": "ng e2e --port 4000 --webdriverUpdate=false"
   },
   "private": true,
   "dependencies": {
@@ -52,5 +52,17 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
-  }
+  },
+  "description": "",
+  "main": "karma.conf.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jadilson12/study_angular.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jadilson12/study_angular/issues"
+  },
+  "homepage": "https://github.com/jadilson12/study_angular#readme"
 }

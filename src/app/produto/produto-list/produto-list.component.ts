@@ -6,6 +6,8 @@ import { ProdutoService } from '../produto.service';
 import { DialogService } from './../../shared/dialog.service';
 import { CategoriaModel } from 'src/app/categoria/categoria.model';
 import { AlertService } from '../../shared/alert.service';
+import { ProdutoModel } from '../produto.model';
+import { ConfimarDeleteComponent } from 'src/app/shared/confimar-delete/confimar-delete.component';
 
 @Component({
   selector: 'app-produto-list',
@@ -16,6 +18,7 @@ export class ProdutoListComponent implements OnInit {
   categorias: CategoriaModel[];
   displayedColumns = ['nome', 'descricao', 'categoria', 'acoes'];
   dataSource: [];
+  produto: ProdutoModel;
 
   constructor(
     private readonly _produtoService: ProdutoService,
@@ -27,9 +30,10 @@ export class ProdutoListComponent implements OnInit {
   ngOnInit() {
     this._title.setTitle('Lista de produtos');
     this.getProdutos();
-    this._produtoService.alterouProdutos.subscribe((_: any) => {
-      this.getProdutos();
+    this._produtoService.alterouProdutos.subscribe((res: any) => {
+      console.info(res);
     });
+    this._dialogService.getDelete().subscribe(ok => (ok ? this.delete(this.produto) : ''));
   }
 
   getProdutos() {
@@ -37,10 +41,15 @@ export class ProdutoListComponent implements OnInit {
       this.dataSource = data;
     });
   }
+  openDialogDelete(produto: ProdutoModel) {
+    this.produto = produto;
+    this._dialogService.openDialog(ConfimarDeleteComponent, { produto, tipo: 'Produto' });
+  }
   delete(produto: any) {
     this._produtoService.deleteProduto(produto.id).subscribe(
-      _ => {
-        this.getProdutos(), this._alertService.sucess();
+      resp => {
+        this.getProdutos();
+        this._alertService.sucess();
       },
       _ => {
         this._alertService.error();
