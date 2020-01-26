@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { EventEmitter, Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { httpOptions } from '../config/httpOptions';
 import { CategoriaModel } from './categoria.model';
 import { environment } from './../../environments/environment';
@@ -11,11 +11,10 @@ import { environment } from './../../environments/environment';
 export class CategoriaService {
   apiUrl = `${environment.apiUrl}/categorias`;
 
-  categorias = [];
   constructor(private readonly _http: HttpClient) {}
 
   getCategorias(): Observable<any> {
-    return this._http.get(this.apiUrl);
+    return this._http.get<CategoriaModel[]>(this.apiUrl);
   }
 
   createCategoria(categoria: any): Observable<any> {

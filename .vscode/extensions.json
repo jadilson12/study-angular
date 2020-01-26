@@ -1,6 +1,9 @@
 {
   "recommendations": [
-    "eg2.tslint",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "johnpapa.angular-essentials",
+    "loiane.angular-extension-pack",
+    // "eg2.tslint", //
     "PKief.material-icon-theme",
     "humao.rest-client",
     "aaron-bond.better-comments",

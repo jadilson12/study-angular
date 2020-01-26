@@ -4,7 +4,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { ProdutoService } from './produto.service';
 import { ProdutoModel } from './produto.model';
 
-import { produtos as MOCK_PRODUTO } from './mock-produto';
+import { produtos as MOCK_PRODUTO } from './produto.mock';
 
 describe('#Produto Service', () => {
   let httpTestingController: HttpTestingController;

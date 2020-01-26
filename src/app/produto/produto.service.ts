@@ -1,16 +1,13 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { ProdutoModel } from './produto.model';
 import { httpOptions } from '../config/httpOptions';
 import { environment } from 'src/environments/environment';
-import { produtos } from './mock-produto';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class ProdutoService {
   apiUrl = `${environment.apiUrl}/produtos`;
 
