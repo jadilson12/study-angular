@@ -26,9 +26,17 @@ import { ProdutoListComponent } from './produto-list/produto-list.component';
 import { ProdutoComponent } from './produto.component';
 import { ProdutoService } from './produto.service';
 import { SharedModule } from '../shared/shared.module';
+import { ProdutoPrintComponent } from './produto-print/produto-print.component';
+import { PrintPageComponent } from '../shared/print-page/print-page.component';
 
 @NgModule({
-  declarations: [ProdutoFormComponent, ProdutoListComponent, ProdutoComponent],
+  declarations: [
+    ProdutoFormComponent,
+    ProdutoListComponent,
+    ProdutoComponent,
+    ProdutoPrintComponent,
+    PrintPageComponent,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,

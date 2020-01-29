@@ -1,3 +1,4 @@
+import { CategoriaRearchComponent } from './../categoria-rearch/categoria-rearch.component';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 import { CategoriaService } from '../categoria.service';
@@ -49,7 +50,7 @@ export class CategoriaListComponent implements OnInit {
   }
 
   openDialog(categoria: CategoriaModel = null): void {
-    this._dialogService.openDialog(CategoriaFormComponent, categoria);
+    this._dialogService.openDialog(CategoriaRearchComponent, categoria);
   }
 
   onNoClick() {

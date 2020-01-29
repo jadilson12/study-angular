@@ -1,0 +1,78 @@
+<div class="container-print">
+  <div class="cabecalho">
+    <div class="org-logo">
+      <div>
+        <div>
+          <h1>Assistência Nº {{ item?.id }}</h1>
+        </div>
+      </div>
+      <div>
+        <img src="../../../assets/images/logos/logo.svg" alt="Logotipo" class="logotipo" />
+      </div>
+    </div>
+    <div class="org-more">
+      <h2>Carlos Auto Peças</h2>
+      <p>00 0000-0000</p>
+      <div>
+        <p>geral@autopecas.com</p>
+        <p>Av. Dr. Ribeiro de Magalhães, 1391</p>
+        <p>Centro Comercial 123, Loja BD</p>
+        <p>4610-108 Felgueiras</p>
+      </div>
+    </div>
+  </div>
+  <div class="descricao items-group">
+    <div class="description-label">
+      <strong>Cliente:</strong>
+      <strong>Contato:</strong>
+    </div>
+    <div class="description-label">
+      <p>Manuel</p>
+      <p>91 000 00 00</p>
+    </div>
+  </div>
+  <div class="descricao items-group">
+    <div class="description-label">
+      <strong>Nome:</strong>
+      <strong>Descrição:</strong>
+      <strong>Categoria:</strong>
+    </div>
+    <div class="description-label">
+      <p>{{ item?.nome }}</p>
+      <p>{{ item?.descricao }}</p>
+      <p>{{ item?.categoria }}</p>
+    </div>
+  </div>
+  <div class="descricao items-group">
+    <div class="description-label">
+      <strong class="description-label">Condições de Garantia:</strong>
+      <ul class="disclaimer">
+        <li>Garantia de 90 dias a contar de hoje</li>
+        <li>Esta garantia cobre defeitos de fabrico do material substituído</li>
+        <li>
+          Esta garantia <strong>não cobre</strong> defeitos provocados por má utilização do
+          equipamento, por exemplo: quebras, quedas, compressão/apertos ou torção/dobragem do
+          equipamento (excepto se o equipamento for dobravel)
+        </li>
+        <li>
+          (Equipamentos sem reparação ou cuja reparação não foi cobrada não são cobertos por nenhuma
+          garantia)
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="descricao items-group">
+    <div class="description-label">
+      <strong>Preço:</strong>
+    </div>
+    <div class="description-label">
+      <p>R$ 200,00</p>
+    </div>
+  </div>
+  <div class="rodape">
+    <p class="disclaimer signature-field">
+      Declaro que recebi o equipamento em conformidade e concordo com o disposto neste documento em
+      29/04/2019
+    </p>
+  </div>
+</div>

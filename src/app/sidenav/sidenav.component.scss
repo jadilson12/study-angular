@@ -1,16 +1,28 @@
-.container {
-  max-width: 100%;
-  height: 80%;
-}
-
-.sidenav {
-  width: 200px;
-}
-
 .mat-list-item:hover {
   background-color: #e3f2fd !important;
 }
 
 .mat-list-item:focus {
   background-color: #90caf9 !important;
+}
+
+.container-sidenav {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+aside {
+  align-items: stretch;
+  flex-grow: 0;
+  width: 230px;
+  flex-shrink: 3;
+}
+content {
+  flex-grow: 0;
+  flex-shrink: 1;
+  width: 100%;
 }

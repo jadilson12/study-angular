@@ -20,17 +20,23 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { SharedModule } from '../shared/shared.module';
+import { CategoriaRearchComponent } from './categoria-rearch/categoria-rearch.component';
 import { CategoriaFormComponent } from './categoria-form/categoria-form.component';
 import { CategoriaListComponent } from './categoria-list/categoria-list.component';
 import { CategoriaComponent } from './categoria.component';
 import { CategoriaService } from './categoria.service';
 import { StoreModule } from '@ngrx/store';
-import { DialogService } from '../shared/dialog.service';
 
 @NgModule({
-  declarations: [CategoriaComponent, CategoriaFormComponent, CategoriaListComponent],
+  declarations: [
+    CategoriaComponent,
+    CategoriaFormComponent,
+    CategoriaListComponent,
+    CategoriaRearchComponent,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -53,10 +59,12 @@ import { DialogService } from '../shared/dialog.service';
     MatIconModule,
     MatCardModule,
     MatTooltipModule,
+    MatTabsModule,
 
     SharedModule,
   ],
   providers: [CategoriaService],
   exports: [CategoriaComponent, StoreModule],
+  entryComponents: [CategoriaRearchComponent],
 })
 export class CategoriaModule {}

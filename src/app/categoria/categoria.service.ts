@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { httpOptions } from '../config/httpOptions';
 import { CategoriaModel } from './categoria.model';
 import { environment } from './../../environments/environment';

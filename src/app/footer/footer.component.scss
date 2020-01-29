@@ -1,11 +1,8 @@
-.app-footer {
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  bottom: 2px;
-  width: 100%;
-}
-
 .mat-card {
-  padding: 0em !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: rgb(230, 231, 230);
+  padding: 10px;
+  border-radius: 0;
 }

@@ -2,11 +2,11 @@
   <!-- Cabeçalho da pagina -->
   <mat-card-header class="card-heard">
     <mat-card-title>Categorias</mat-card-title>
-    <button mat-raised-button color="primary" id="nova-categoria" (click)="openDialog(null)">
-      Nova categoria
+    <button mat-mini-fab color="primary" id="nova-categoria" (click)="openDialog(null)">
+      <mat-icon>add</mat-icon>
     </button>
   </mat-card-header>
-  <mat-table mat-table [dataSource]="dataSource">
+  <mat-table mat-table [dataSource]="dataSource" id="table-print">
     <!-- Nome Column -->
     <ng-container matColumnDef="nome">
       <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
@@ -25,7 +25,7 @@
       <mat-cell *matCellDef="let item">
         <button
           id="btnEdit"
-          mat-button
+          mat-icon-button
           (click)="openDialog(item)"
           matTooltip="Clique para editar o item"
           matTooltipPosition="above"
@@ -36,7 +36,7 @@
         </button>
         <button
           id="btnDelete"
-          mat-button
+          mat-icon-button
           (click)="openDialogDelete(item)"
           type="button"
           matTooltip="Clique para excluir o item"

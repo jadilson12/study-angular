@@ -31,7 +31,7 @@
       <mat-cell *matCellDef="let item">
         <button
           id="btnEdit"
-          mat-button
+          mat-icon-button
           (click)="openDialog(item)"
           matTooltip="Clique para editar o item"
           matTooltipPosition="above"
@@ -42,7 +42,7 @@
         </button>
         <button
           id="btnDelete"
-          mat-button
+          mat-icon-button
           (click)="openDialogDelete(item)"
           type="button"
           matTooltip="Clique para excluir o item"
@@ -50,6 +50,16 @@
           matTooltipPosition="above"
         >
           <mat-icon>delete</mat-icon>
+        </button>
+        <button
+          id="btnDelete"
+          mat-icon-button
+          (click)="printPage(item)"
+          type="button"
+          matTooltipClass="btn-delete"
+          matTooltipPosition="above"
+        >
+          <mat-icon>print</mat-icon>
         </button>
       </mat-cell>
     </ng-container>

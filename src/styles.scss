@@ -24,3 +24,19 @@ body {
   background: #f44336;
   color: #fff;
 }
+
+@media not print {
+  /* hide the printing components from @media screen */
+  .printable {
+    display: none;
+  }
+}
+@media print {
+  /* hide the screen components from @media print */
+  .screenable,
+  aside,
+  header,
+  footer {
+    display: none;
+  }
+}

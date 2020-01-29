@@ -30,9 +30,7 @@ export class ProdutoListComponent implements OnInit {
   ngOnInit() {
     this._title.setTitle('Lista de produtos');
     this.getProdutos();
-    this._produtoService.alterouProdutos.subscribe((res: any) => {
-      console.info(res);
-    });
+    this._produtoService.alterouProdutos.subscribe((res: any) => {});
     this._dialogService.getDelete().subscribe(ok => (ok ? this.delete(this.produto) : ''));
   }
 
@@ -62,5 +60,9 @@ export class ProdutoListComponent implements OnInit {
   }
   onNoClick() {
     this._dialogService.closeDialog();
+  }
+
+  printPage(item: any) {
+    this._produtoService.print.emit(item);
   }
 }

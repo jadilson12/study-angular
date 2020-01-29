@@ -12,6 +12,7 @@ export class ProdutoService {
   apiUrl = `${environment.apiUrl}/produtos`;
 
   alterouProdutos = new EventEmitter();
+  print = new EventEmitter<any>();
 
   constructor(private _http: HttpClient) {}
 
