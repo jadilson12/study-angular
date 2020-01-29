@@ -29,8 +29,6 @@ import { SharedModule } from '../shared/shared.module';
 import { ProdutoPrintComponent } from './produto-print/produto-print.component';
 import { PrintPageComponent } from '../shared/print-page/print-page.component';
 
-import { ExportAsModule } from 'ngx-export-as';
-
 @NgModule({
   declarations: [
     ProdutoFormComponent,
@@ -65,7 +63,6 @@ import { ExportAsModule } from 'ngx-export-as';
     MatToolbarModule,
     MatButtonModule,
     MatTooltipModule,
-    ExportAsModule,
   ],
   providers: [ProdutoService],
   exports: [ProdutoComponent],

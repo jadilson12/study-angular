@@ -2,22 +2,11 @@
   <!-- Cabeçalho da pagina -->
   <mat-card-header class="card-heard">
     <mat-card-title>Produtos</mat-card-title>
-    <button
-      id="btnEdit"
-      mat-icon-button
-      (click)="export()"
-      matTooltip="Clique para editar o item"
-      matTooltipPosition="above"
-      matTooltipClass="btn-edit"
-      type="button"
-    >
-      <mat-icon>edit</mat-icon>
-    </button>
     <a mat-raised-button color="primary" id="btnAddProduto" (click)="openDialog()">
       Novo produto
     </a>
   </mat-card-header>
-  <mat-table #table [dataSource]="dataSource" id="myTableElementId">
+  <mat-table #table [dataSource]="dataSource">
     <!-- Nome Column -->
     <ng-container matColumnDef="nome">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
