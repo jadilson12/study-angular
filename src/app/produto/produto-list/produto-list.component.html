@@ -2,6 +2,7 @@
   <!-- Cabeçalho da pagina -->
   <mat-card-header class="card-heard">
     <mat-card-title>Produtos</mat-card-title>
+    <button mat-raised-button color="primary" (click)="download()">Export csv</button>
     <a mat-raised-button color="primary" id="btnAddProduto" (click)="openDialog()">
       Novo produto
     </a>

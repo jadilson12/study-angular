@@ -1,3 +1,4 @@
+import { JsontocsvService } from './../../shared/jsontocsv.service';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
@@ -25,6 +26,7 @@ export class ProdutoListComponent implements OnInit {
     private readonly _dialogService: DialogService,
     private readonly _alertService: AlertService,
     private readonly _title: Title,
+    private readonly _jsonToCSV: JsontocsvService,
   ) {}
 
   ngOnInit() {
@@ -64,5 +66,11 @@ export class ProdutoListComponent implements OnInit {
 
   printPage(item: any) {
     this._produtoService.print.emit(item);
+  }
+
+  download() {
+    const header = ['id', 'nome', 'descricao', 'categoria'];
+    const fileName = 'lista-categorias-loja';
+    this._jsonToCSV.downloadFile(this.dataSource, header, fileName);
   }
 }

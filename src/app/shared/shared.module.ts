@@ -15,6 +15,7 @@ import { FooterFormComponent } from './footer-form/footer-form.component';
 import { MessageErrorComponent } from './message-error/message-error.component';
 import { MatCardModule } from '@angular/material/card';
 import { ConfimarDeleteComponent } from './confimar-delete/confimar-delete.component';
+import { JsontocsvService } from './jsontocsv.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { ConfimarDeleteComponent } from './confimar-delete/confimar-delete.compo
     ButtonTableListComponent,
     ConfimarDeleteComponent,
   ],
-  providers: [DialogService, AlertService],
+  providers: [DialogService, AlertService, JsontocsvService],
   entryComponents: [ConfimarDeleteComponent],
 })
 export class SharedModule {}
