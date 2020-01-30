@@ -1,21 +1,29 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { LayoutModule } from '@angular/cdk/layout';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+
+import { DataService } from './data.service';
 import { ToolbarModule } from './toolbar/toolbar.module';
 import { SideNavModule } from './sidenav/sidenav.module';
 import { FooterModule } from './footer/footer.module';
-import { HomeModule } from './home/home.module';
 import { ProdutoModule } from './produto/produto.module';
 import { NotFaundModule } from './not-faund/not-faund.module';
-import { DataService } from './data.service';
-
 import { SharedModule } from './shared/shared.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { HomeModule } from './home/home.module';
+import { AppComponent } from './app.component';
+
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
+
 @NgModule({
   imports: [
     LayoutModule,
@@ -24,12 +32,20 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
 
     HttpClientInMemoryWebApiModule.forRoot(DataService, {
       dataEncapsulation: false,
       passThruUnknownUrl: true,
       put204: true, // return entity after PUT/update
     }),
+
     SideNavModule,
     FooterModule,
     HomeModule,

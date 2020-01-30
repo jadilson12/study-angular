@@ -16,6 +16,7 @@ import { MessageErrorComponent } from './message-error/message-error.component';
 import { MatCardModule } from '@angular/material/card';
 import { ConfimarDeleteComponent } from './confimar-delete/confimar-delete.component';
 import { JsontocsvService } from './jsontocsv.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { JsontocsvService } from './jsontocsv.service';
     FooterFormComponent,
     ButtonTableListComponent,
     ConfimarDeleteComponent,
+    TranslateModule,
   ],
   providers: [DialogService, AlertService, JsontocsvService],
   entryComponents: [ConfimarDeleteComponent],

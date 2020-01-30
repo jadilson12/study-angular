@@ -1,3 +1,4 @@
+import { MatDividerModule } from '@angular/material/divider';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -9,7 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [ToolbarComponent],
-  imports: [BrowserModule, MatToolbarModule, MatButtonModule, MatIconModule],
+  imports: [BrowserModule, MatToolbarModule, MatButtonModule, MatIconModule, MatDividerModule],
   exports: [ToolbarComponent],
 })
 export class ToolbarModule {}
