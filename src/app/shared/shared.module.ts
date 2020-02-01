@@ -1,3 +1,4 @@
+import { AjudaAppService } from './ajuda-app.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
@@ -45,7 +46,7 @@ import { TranslateModule } from '@ngx-translate/core';
     ConfimarDeleteComponent,
     TranslateModule,
   ],
-  providers: [DialogService, AlertService, JsontocsvService],
+  providers: [DialogService, AlertService, JsontocsvService, AjudaAppService],
   entryComponents: [ConfimarDeleteComponent],
 })
 export class SharedModule {}

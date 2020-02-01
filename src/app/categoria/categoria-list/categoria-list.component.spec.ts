@@ -28,7 +28,7 @@ import { AlertService } from 'src/app/shared/alert.service';
 import { Title } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { categorias as CATEGORIA_MOCK } from '../mock-categoria';
+import { categorias as CATEGORIA_MOCK } from '../categoria.mock';
 import { of } from 'rxjs';
 import { DebugElement } from '@angular/core';
 
