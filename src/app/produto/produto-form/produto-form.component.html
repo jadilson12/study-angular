@@ -2,7 +2,7 @@
   <div class="container" cols="2">
     <!-- Cabeçalho da pagina -->
     <mat-card-header class="card-heard">
-      <mat-card-title>{{ isEdit() }} produto</mat-card-title>
+      <mat-card-title>{{ isFormEdit ? 'Atualizar' : 'Criar' }} produto</mat-card-title>
     </mat-card-header>
     <div class="controles-container">
       <mat-form-field>
@@ -34,8 +34,8 @@
       <app-footer-form
         [nameForm]="form"
         [isFormEdit]="isFormEdit"
-        (closeForm)="closeDialog()"
-        (clearForm)="formClear()"
+        (closeForm)="_dialogService.closeDialog()"
+        (clearForm)="form.reset()"
       ></app-footer-form>
     </div>
   </div>

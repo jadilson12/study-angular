@@ -2,13 +2,14 @@
   <!-- Cabeçalho da pagina -->
   <mat-card-header class="card-heard">
     <mat-card-title id="title-category">Categorias</mat-card-title>
-
-    <button mat-mini-fab color="primary" id="nova-categoria" (click)="openDialog(null)">
-      <mat-icon>add</mat-icon>
-    </button>
-    <button mat-mini-fab color="primary" (click)="onHelp()">
-      <mat-icon>help</mat-icon>
-    </button>
+    <div>
+      <button mat-mini-fab color="primary" (click)="onHelp()">
+        <mat-icon>help</mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" id="nova-categoria" (click)="openDialog(null)">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
   </mat-card-header>
   <mat-table mat-table [dataSource]="dataSource" id="table-print">
     <!-- Nome Column -->

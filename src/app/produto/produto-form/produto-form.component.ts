@@ -27,7 +27,7 @@ export class ProdutoFormComponent implements OnInit {
     private readonly _formBuilder: FormBuilder,
     private readonly _produtoService: ProdutoService,
     public readonly _dialogRef: MatDialogRef<ProdutoFormComponent>,
-    private readonly _dialogService: DialogService,
+    public readonly _dialogService: DialogService,
     private readonly _alertService: AlertService,
     @Inject(MAT_DIALOG_DATA) public _data: any,
   ) {}
@@ -38,7 +38,7 @@ export class ProdutoFormComponent implements OnInit {
   }
   onSubmit() {
     this.isFormEdit ? this.update() : this.create();
-    this.closeDialog();
+    this._dialogService.closeDialog();
   }
 
   edit() {
@@ -74,17 +74,5 @@ export class ProdutoFormComponent implements OnInit {
         this._alertService.error(error.body.error);
       },
     );
-  }
-
-  isEdit() {
-    return this.isFormEdit ? 'Atualizar' : 'Criar';
-  }
-
-  formClear() {
-    this.form.reset();
-  }
-
-  closeDialog() {
-    this._dialogService.closeDialog();
   }
 }
