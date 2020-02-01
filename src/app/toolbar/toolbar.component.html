@@ -1,15 +1,18 @@
 <mat-toolbar color="primary" class="mat-elevation-z4" id="toolbar">
-  <button mat-icon-button id="menu" (click)="setDawer()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Loja</span>
-  <mat-divider></mat-divider>
-  <select #langSelect (change)="_translate.use(langSelect.value)">
-    <option
-      *ngFor="let lang of _translate.getLangs()"
-      [value]="lang"
-      [selected]="lang === _translate.currentLang"
-      >{{ lang }}</option
-    >
-  </select>
+  <div>
+    <button mat-icon-button id="menu" (click)="setDawer()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Loja</span>
+  </div>
+  <div class="lang">
+    <select class="lang" #langSelect (change)="_translate.use(langSelect.value)">
+      <option
+        *ngFor="let lang of _translate.getLangs()"
+        [value]="lang"
+        [selected]="lang === _translate.currentLang"
+        >{{ lang }}</option
+      >
+    </select>
+  </div>
 </mat-toolbar>

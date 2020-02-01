@@ -17,6 +17,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { Router } from '@angular/router';
 import { browser } from 'protractor';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -40,6 +41,7 @@ describe('AppComponent', () => {
         ProdutoModule,
         NotFaundModule,
         SharedModule,
+        TranslateModule.forRoot(),
       ],
 
       providers: [DataService],

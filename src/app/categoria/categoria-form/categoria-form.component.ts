@@ -66,21 +66,13 @@ export class CategoriaFormComponent implements OnInit {
   create() {
     this._categoriaService.createCategoria(this.form.value).subscribe(
       categoria => {
-        this.formClear();
+        this.form.reset();
         this._alertService.sucess();
       },
       error => {
         this._alertService.error(error.body.error);
       },
     );
-  }
-
-  isEdit() {
-    return this.isFormEdit ? 'Atualizar' : 'Criar';
-  }
-
-  formClear() {
-    this.form.reset();
   }
 
   closeDialog() {

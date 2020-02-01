@@ -3,7 +3,7 @@ import { async, TestBed, inject, fakeAsync } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { CategoriaService } from './categoria.service';
-import { categorias as CATEGORIA_MOCK, categorias } from './mock-categoria';
+import { categorias as CATEGORIA_MOCK, categorias } from './categoria.mock';
 import { CategoriaModel } from './categoria.model';
 
 describe('#Categoria Services', () => {

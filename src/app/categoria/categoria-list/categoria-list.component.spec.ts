@@ -1,3 +1,4 @@
+import { element } from 'protractor';
 import { async, TestBed, ComponentFixture } from '@angular/core/testing';
 
 import { CategoriaListComponent } from './categoria-list.component';
@@ -26,33 +27,9 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { DialogService } from 'src/app/shared/dialog.service';
 import { AlertService } from 'src/app/shared/alert.service';
 import { Title } from '@angular/platform-browser';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
 import { categorias as CATEGORIA_MOCK } from '../categoria.mock';
 import { of } from 'rxjs';
-import { DebugElement } from '@angular/core';
-
-function setup() {
-  const fixture = TestBed.createComponent(CategoriaListComponent);
-  const httpTestingController = TestBed.get(HttpTestingController);
-  const component = fixture.debugElement.componentInstance;
-  const categoriaService = TestBed.get(CategoriaService);
-  const diaLogService = TestBed.get(DialogService);
-  const alertaService = TestBed.get(AlertService);
-  const httpClient = TestBed.get(HttpClient);
-  const title = TestBed.get(Title);
-
-  return {
-    httpClient,
-    fixture,
-    component,
-    categoriaService,
-    httpTestingController,
-    diaLogService,
-    alertaService,
-    title,
-  };
-}
+import { TranslateModule } from '@ngx-translate/core';
 
 const categoriasServiceStub = {
   get() {
@@ -61,11 +38,12 @@ const categoriasServiceStub = {
   },
 };
 describe('#Categoria List', () => {
-  let categoriaService: CategoriaService;
-  let diaLogService: DialogService;
-  let alertaService: AlertService;
-  let title: Title;
-  let httpTestingController: HttpTestingController;
+  let component: CategoriaListComponent;
+  let fixture: ComponentFixture<CategoriaListComponent>;
+  let element: HTMLElement;
+  let categorisService: CategoriaService;
+  let titleCategoria: HTMLElement;
+  let btnNovaCategoria: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -91,36 +69,41 @@ describe('#Categoria List', () => {
         MatIconModule,
         MatCardModule,
         MatTooltipModule,
-
+        TranslateModule.forRoot(),
         SharedModule,
       ],
-      providers: [
-        CategoriaService,
-        DialogService,
-        AlertService,
-        Title,
-        // { provide: CategoriaService, useValue: categoriasServiceStub },
-      ],
+      providers: [CategoriaService, DialogService, AlertService, Title],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    const { fixture } = setup();
-    fixture.detectChanges();
+    fixture = TestBed.createComponent(CategoriaListComponent);
+    categorisService = TestBed.get(CategoriaService);
+    component = fixture.componentInstance;
+    element = fixture.debugElement.nativeElement;
 
-    categoriaService = TestBed.get(CategoriaService);
+    titleCategoria = element.querySelector('#title-category');
+    btnNovaCategoria = element.querySelector('#nova-categoria');
+    fixture.detectChanges();
   });
 
-  it('Deve ser lista categoria', () => {
-    const { component } = setup();
+  it('Deve deve component listar categorias', () => {
     expect(component).toBeTruthy();
   });
 
-  it('Deve ter um button adicionar categoria', () => {
-    const { fixture } = setup();
-    fixture.detectChanges();
-    const el = fixture.debugElement.nativeElement;
-    const btnAdd = el.querySelector('button');
-    expect(btnAdd.textContent).toBe(' Nova categoria ');
+  it('Deve ter uma lista de id validos para menu help ', () => {
+    expect(titleCategoria).toBeTruthy();
+    expect(btnNovaCategoria).toBeTruthy();
+
+    expect(titleCategoria).not.toBeFalsy();
+    expect(btnNovaCategoria).not.toBeFalsy();
   });
+
+  // it('Deve ter um button adicionar categoria', () => {
+  //   const { fixture } = setup();
+  //   fixture.detectChanges();
+  //   const el = fixture.debugElement.nativeElement;
+  //   const btnAdd = el.querySelector('button');
+  //   expect(btnAdd.textContent).toBe(' Nova categoria ');
+  // });
 });

@@ -3,32 +3,12 @@ import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing'
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { categorias as CATEGORIA_MOCK } from '../mock-categoria';
+import { categorias as CATEGORIA_MOCK } from '../categoria.mock';
 import { CategoriaService } from '../categoria.service';
-import { DialogService } from 'src/app/shared/dialog.service';
-import { AlertService } from 'src/app/shared/alert.service';
 import { By } from '@angular/platform-browser';
-
-// function setup() {
-//   const fixture = TestBed.createComponent(CategoriaFormComponent);
-//   const component = fixture.componentInstance;
-//   const httpTestingController = TestBed.get(HttpTestingController);
-//   const categoriaService = TestBed.get(CategoriaService);
-//   const diaLogService = TestBed.get(DialogService);
-//   const alertaService = TestBed.get(AlertService);
-
-//   return {
-//     fixture,
-//     component,
-//     categoriaService,
-//     httpTestingController,
-//     diaLogService,
-//     alertaService,
-//   };
-// }
 
 describe('#Categoria form', () => {
   let component: CategoriaFormComponent;
@@ -96,11 +76,11 @@ describe('#Categoria form', () => {
     expect(descricao.hasError('maxlength')).toBeTruthy();
   });
 
-  it('Deve usar categorias services', () => {
-    const categoriaService = fixture.debugElement.injector.get(CategoriaService);
-    fixture.detectChanges();
-    expect(categoriaService.categorias).toEqual([]);
-  });
+  // it('Deve usar categorias services', () => {
+  //   const categoriaService = fixture.debugElement.injector.get(CategoriaService);
+  //   fixture.detectChanges();
+  //   expect(categoriaService.categorias).toEqual([]);
+  // });
 
   it('Deve ser criado', () => {
     expect(component).toBeTruthy();

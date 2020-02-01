@@ -1,5 +1,6 @@
+import { AjudaAppService } from './../../shared/ajuda-app.service';
 import { CategoriaRearchComponent } from './../categoria-rearch/categoria-rearch.component';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 
 import { CategoriaService } from '../categoria.service';
 import { CategoriaFormComponent } from '../categoria-form/categoria-form.component';
@@ -25,6 +26,7 @@ export class CategoriaListComponent implements OnInit {
     private readonly _dialogService: DialogService,
     private readonly _alertService: AlertService,
     private readonly _title: Title,
+    private readonly _ajuda: AjudaAppService,
   ) {}
 
   ngOnInit() {
@@ -33,6 +35,29 @@ export class CategoriaListComponent implements OnInit {
     this._dialogService.getDelete().subscribe(ok => (ok ? this.delete(this.categoria) : ''));
   }
 
+  onHelp() {
+    const passos = [
+      {
+        element: '#title-category',
+        popover: {
+          className: 'first-step-popover-class',
+          title: 'Title on Popover',
+          description: 'Body of the popover',
+          position: 'buttom',
+        },
+      },
+      {
+        element: '#nova-categoria',
+        popover: {
+          title: 'Nova categoria',
+          animate: true,
+          description: 'Body of the popover',
+          position: 'left',
+        },
+      },
+    ];
+    this._ajuda.steps(passos);
+  }
   getCategorias() {
     this._categoriaService.getCategorias().subscribe(data => (this.dataSource = data));
   }

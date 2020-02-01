@@ -27,6 +27,7 @@ import {
   BrowserAnimationsModule,
   NoopAnimationsModule,
 } from '@angular/platform-browser/animations';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 describe('ProdutoListComponent', () => {
   let component: ProdutoListComponent;
@@ -58,6 +59,7 @@ describe('ProdutoListComponent', () => {
         MatSnackBarModule,
         BrowserAnimationsModule,
         NoopAnimationsModule,
+        TranslateModule.forRoot(),
       ],
       providers: [ProdutoService],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],

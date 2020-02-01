@@ -2,7 +2,7 @@
   <mat-grid-list cols="1" row-height="100px">
     <!-- Cabeçalho da pagina -->
     <mat-card-header class="card-heard">
-      <mat-card-title>{{ isEdit() }} categoria</mat-card-title>
+      <mat-card-title>{{ isFormEdit ? 'Atualizar' : 'Criar' }} categoria</mat-card-title>
     </mat-card-header>
     <div class="controles-container">
       <mat-form-field>
@@ -23,7 +23,7 @@
       [nameForm]="form"
       [isFormEdit]="isFormEdit"
       (closeForm)="closeDialog()"
-      (clearForm)="formClear()"
+      (clearForm)="form.reset()"
     ></app-footer-form>
   </mat-grid-list>
 </form>
