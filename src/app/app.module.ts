@@ -19,6 +19,7 @@ import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
 
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -39,7 +40,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         deps: [HttpClient],
       },
     }),
-
+    NgxPermissionsModule.forRoot(),
     HttpClientInMemoryWebApiModule.forRoot(DataService, {
       dataEncapsulation: false,
       passThruUnknownUrl: true,

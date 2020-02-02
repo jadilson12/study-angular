@@ -9,6 +9,7 @@ import { CategoriaModel } from 'src/app/categoria/categoria.model';
 import { AlertService } from '../../shared/alert.service';
 import { ProdutoModel } from '../produto.model';
 import { ConfimarDeleteComponent } from 'src/app/shared/confimar-delete/confimar-delete.component';
+import { NgxPermissionsService } from 'ngx-permissions';
 
 @Component({
   selector: 'app-produto-list',
@@ -27,9 +28,12 @@ export class ProdutoListComponent implements OnInit {
     private readonly _alertService: AlertService,
     private readonly _title: Title,
     private readonly _jsonToCSV: JsontocsvService,
+    private readonly _permissionsService: NgxPermissionsService,
   ) {}
 
   ngOnInit() {
+    const perm = ['ADMIN', 'GUEST'];
+    this._permissionsService.loadPermissions(perm);
     this._title.setTitle('Lista de produtos');
     this.getProdutos();
     this._produtoService.alterouProdutos.subscribe((res: any) => {});
@@ -38,6 +42,7 @@ export class ProdutoListComponent implements OnInit {
 
   getProdutos() {
     this._produtoService.getProdutos().subscribe(data => {
+      this._permissionsService.loadPermissions(data);
       this.dataSource = data;
     });
   }
