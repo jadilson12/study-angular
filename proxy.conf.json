@@ -1,0 +1,10 @@
+{
+  "/proxy/**": {
+    "target": "api/",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+}
