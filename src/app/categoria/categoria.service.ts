@@ -1,15 +1,18 @@
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { httpOptions } from '../config/httpOptions';
-import { CategoriaModel } from './categoria.model';
-import { environment } from './../../environments/environment';
+import { HttpClient } from "@angular/common/http";
+import { Observable, Subject } from "rxjs";
+import { Injectable } from "@angular/core";
+import { httpOptions } from "../config/httpOptions";
+import { CategoriaModel } from "./categoria.model";
+import { environment } from "./../../environments/environment";
+import { EventEmitter } from "protractor";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root"
 })
 export class CategoriaService {
   apiUrl = `${environment.apiUrl}/categorias`;
+
+  updateCategorias = new Subject();
 
   constructor(private readonly _http: HttpClient) {}
 

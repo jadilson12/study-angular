@@ -1,17 +1,18 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable, EventEmitter } from "@angular/core";
 
-import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { Observable, Subject } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
-import { ProdutoModel } from './produto.model';
-import { httpOptions } from '../config/httpOptions';
-import { environment } from 'src/environments/environment';
+import { ProdutoModel } from "./produto.model";
+import { httpOptions } from "../config/httpOptions";
+import { environment } from "src/environments/environment";
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ providedIn: "root" })
 export class ProdutoService {
   apiUrl = `${environment.apiUrl}/produtos`;
 
-  alterouProdutos = new EventEmitter();
+  alterouProdutos = new Subject();
+
   print = new EventEmitter<any>();
 
   constructor(private _http: HttpClient) {}

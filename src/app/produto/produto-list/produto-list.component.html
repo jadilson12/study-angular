@@ -2,7 +2,7 @@
   <!-- Cabeçalho da pagina -->
   <mat-card-header class="card-heard">
     <mat-card-title>{{ 'PRODUCT.TITLE' | translate }}</mat-card-title>
-    <button mat-raised-button color="primary" (click)="download()">Export csv</button>
+    <button id="export" mat-raised-button color="primary" (click)="download()">Export csv</button>
     <a mat-raised-button color="primary" id="btnAddProduto" (click)="openDialog()">
       {{ 'PRODUCT.NEW' | translate }}
     </a>
@@ -55,7 +55,7 @@
           <mat-icon>delete</mat-icon>
         </button>
         <button
-          id="btnDelete"
+          id="btnPrint"
           mat-icon-button
           (click)="printPage(item)"
           type="button"
