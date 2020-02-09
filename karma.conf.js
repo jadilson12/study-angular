@@ -3,39 +3,34 @@
 
 module.exports = function(config) {
   config.set({
-    basePath: '',
-    frameworks: ['jasmine', '@angular-devkit/build-angular'],
+    basePath: "",
+    frameworks: ["jasmine", "@angular-devkit/build-angular"],
     plugins: [
-      require('karma-jasmine'),
-      require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter'),
-      require('karma-coverage-istanbul-reporter'),
-      require('@angular-devkit/build-angular/plugins/karma'),
+      require("karma-jasmine"),
+      require("karma-chrome-launcher"),
+      require("karma-jasmine-html-reporter"),
+      require("karma-coverage-istanbul-reporter"),
+      require("@angular-devkit/build-angular/plugins/karma")
     ],
     client: {
       clearContext: false, // leave Jasmine Spec Runner output visible in browser
       jasmine: {
         random: true,
-        seed: '4321',
+        seed: "4321",
         oneFailurePerSpec: true,
         failFast: true,
-        timeoutInterval: 1000,
-      },
+        timeoutInterval: 1000
+      }
     },
     coverageIstanbulReporter: {
-      dir: require('path').join(__dirname, './coverage/study'),
-      reports: ['html', 'lcovonly', 'text-summary'],
-      fixWebpackSourcePaths: true,
+      dir: require("path").join(__dirname, "./coverage/study"),
+      reports: ["html", "lcovonly", "text-summary"],
+      fixWebpackSourcePaths: true
     },
-    reporters: ['progress', 'kjhtml'],
-    port: 9876,
+    reporters: ["progress", "kjhtml"],
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: true,
-    // ['Chrome'], with window open chrome
-    // ['ChromeHeadless'],  not open window chrome
-    browsers: ['ChromeHeadless'], //
-    singleRun: false,
-    restartOnFileChange: true,
+    singleRun: true,
+    restartOnFileChange: false
   });
 };
