@@ -2,20 +2,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { CategoriaComponent } from './categoria/categoria.component';
-import { HomeComponent } from './home/home.component';
-import { ProdutoComponent } from './produto/produto.component';
-import { NotFaundComponent } from './not-faund/not-faund.component';
-import { CategoriaFormComponent } from './categoria/categoria-form/categoria-form.component';
-import { ProdutoFormComponent } from './produto/produto-form/produto-form.component';
-
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'produtos', component: ProdutoComponent },
-  { path: 'produto/novo', component: ProdutoFormComponent },
-  { path: 'categorias', component: CategoriaComponent },
-  { path: 'categoria/nova', component: CategoriaFormComponent },
-  { path: '**', component: NotFaundComponent, pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', loadChildren: () => import('./home/home.module').then((m) => m.HomeModule) },
+  {
+    path: 'categorias',
+    loadChildren: () => import('./categoria/categoria.module').then((m) => m.CategoriaModule),
+  },
+  {
+    path: 'produtos',
+    loadChildren: () => import('./produto/produto.module').then((m) => m.ProdutoModule),
+  },
 ];
 
 @NgModule({

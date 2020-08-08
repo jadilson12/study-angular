@@ -11,7 +11,6 @@ import { SidenavService } from './sidenav.service';
 import { HomeComponent } from '../home/home.component';
 import { ProdutoComponent } from '../produto/produto.component';
 import { ProdutoFormComponent } from '../produto/produto-form/produto-form.component';
-import { NotFaundComponent } from '../not-faund/not-faund.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -40,7 +39,6 @@ describe('#Sidenav component', () => {
         ProdutoFormComponent,
         CategoriaComponent,
         CategoriaFormComponent,
-        NotFaundComponent,
       ],
       imports: [
         AppRoutingModule,

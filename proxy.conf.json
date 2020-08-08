@@ -1,5 +1,5 @@
 {
-  "/proxy/**": {
+  "/api/**": {
     "target": "api/",
     "secure": false,
     "logLevel": "debug",

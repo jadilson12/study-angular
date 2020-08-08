@@ -1,8 +1,9 @@
+import { ProdutoImockService } from './produto.mock..service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -28,7 +29,9 @@ import { ProdutoService } from './produto.service';
 import { SharedModule } from '../shared/shared.module';
 import { ProdutoPrintComponent } from './produto-print/produto-print.component';
 import { PrintPageComponent } from '../shared/print-page/print-page.component';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
+const routes: Routes = [{ path: '', component: ProdutoListComponent }];
 @NgModule({
   declarations: [
     ProdutoFormComponent,
@@ -40,10 +43,15 @@ import { PrintPageComponent } from '../shared/print-page/print-page.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule,
     HttpClientModule,
 
     SharedModule,
+    RouterModule.forChild(routes),
+    HttpClientInMemoryWebApiModule.forFeature(ProdutoImockService, {
+      dataEncapsulation: false,
+      passThruUnknownUrl: true,
+      put204: true, // return entity after PUT/update
+    }),
 
     MatGridListModule,
     MatButtonModule,

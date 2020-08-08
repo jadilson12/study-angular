@@ -1,11 +1,10 @@
-import { async, TestBed, ComponentFixture } from '@angular/core/testing';
-import { Inject, DebugElement, NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { ProdutoFormComponent } from './produto-form.component';
-import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ProdutoService } from '../produto.service';
 import { DialogService } from 'src/app/shared/dialog.service';
-import { CategoriaModel } from 'src/app/categoria/categoria.model';
 import { AlertService } from 'src/app/shared/alert.service';
 import { MessageErrorComponent } from 'src/app/shared/message-error/message-error.component';
 import { FooterFormComponent } from 'src/app/shared/footer-form/footer-form.component';
