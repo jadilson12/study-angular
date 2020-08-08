@@ -33,7 +33,7 @@
     "angular-in-memory-web-api": "^0.9.0",
     "driver.js": "^0.9.8",
     "ngx-permissions": "^7.0.3",
-    "rxjs": "~6.5.4",
+    "rxjs": "~6.6.2",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
