@@ -34,39 +34,37 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 const routes: Routes = [{ path: '', component: CategoriaListComponent }];
 
 @NgModule({
-  declarations: [CategoriaComponent, CategoriaFormComponent, CategoriaListComponent],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    RouterModule.forChild(routes),
-    HttpClientInMemoryWebApiModule.forFeature(CategoriaMockService, {
-      dataEncapsulation: false,
-      passThruUnknownUrl: true,
-      put204: true, // return entity after PUT/update
-    }),
-    MatGridListModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatCheckboxModule,
-    MatSelectModule,
-    MatRadioModule,
-    MatNativeDateModule,
-    MatToolbarModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    MatCardModule,
-    MatTooltipModule,
-    MatTabsModule,
-
-    SharedModule,
-  ],
-  providers: [CategoriaService],
-  exports: [CategoriaComponent, StoreModule],
-  entryComponents: [],
+    declarations: [CategoriaComponent, CategoriaFormComponent, CategoriaListComponent],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        RouterModule.forChild(routes),
+        HttpClientInMemoryWebApiModule.forFeature(CategoriaMockService, {
+            dataEncapsulation: false,
+            passThruUnknownUrl: true,
+            put204: true, // return entity after PUT/update
+        }),
+        MatGridListModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatDatepickerModule,
+        MatCheckboxModule,
+        MatSelectModule,
+        MatRadioModule,
+        MatNativeDateModule,
+        MatToolbarModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatProgressSpinnerModule,
+        MatIconModule,
+        MatCardModule,
+        MatTooltipModule,
+        MatTabsModule,
+        SharedModule,
+    ],
+    providers: [CategoriaService],
+    exports: [CategoriaComponent, StoreModule]
 })
 export class CategoriaModule {}

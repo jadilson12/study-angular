@@ -20,33 +20,31 @@ import { JsontocsvService } from './jsontocsv.service';
 import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-  declarations: [
-    MessageErrorComponent,
-    FooterFormComponent,
-    ButtonTableListComponent,
-    ConfimarDeleteComponent,
-  ],
-  imports: [
-    CommonModule,
-
-    MatFormFieldModule,
-    MatButtonModule,
-    MatInputModule,
-    MatSnackBarModule,
-    MatGridListModule,
-    MatTooltipModule,
-    MatProgressSpinnerModule,
-    MatIconModule,
-    MatCardModule,
-  ],
-  exports: [
-    MessageErrorComponent,
-    FooterFormComponent,
-    ButtonTableListComponent,
-    ConfimarDeleteComponent,
-    TranslateModule,
-  ],
-  providers: [DialogService, AlertService, JsontocsvService, AjudaAppService],
-  entryComponents: [ConfimarDeleteComponent],
+    declarations: [
+        MessageErrorComponent,
+        FooterFormComponent,
+        ButtonTableListComponent,
+        ConfimarDeleteComponent,
+    ],
+    imports: [
+        CommonModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatInputModule,
+        MatSnackBarModule,
+        MatGridListModule,
+        MatTooltipModule,
+        MatProgressSpinnerModule,
+        MatIconModule,
+        MatCardModule,
+    ],
+    exports: [
+        MessageErrorComponent,
+        FooterFormComponent,
+        ButtonTableListComponent,
+        ConfimarDeleteComponent,
+        TranslateModule,
+    ],
+    providers: [DialogService, AlertService, JsontocsvService, AjudaAppService]
 })
 export class SharedModule {}
