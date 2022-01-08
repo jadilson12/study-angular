@@ -32,8 +32,8 @@
       <mat-cell *matCellDef="let item">
         <button
           id="btnEdit"
-          mat-icon-button
           (click)="openDialog(item)"
+          mat-icon-button
           matTooltip="Clique para editar o item"
           matTooltipPosition="above"
           matTooltipClass="btn-edit"
@@ -44,8 +44,8 @@
         </button>
         <button
           id="btnDelete"
-          mat-icon-button
           (click)="openDialogDelete(item)"
+          mat-icon-button
           type="button"
           matTooltip="Clique para excluir o item"
           matTooltipClass="btn-delete"

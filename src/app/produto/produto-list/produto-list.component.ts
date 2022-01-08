@@ -1,15 +1,13 @@
-import { JsontocsvService } from './../../shared/jsontocsv.service';
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-
-import { ProdutoFormComponent } from '../produto-form/produto-form.component';
-import { ProdutoService } from '../produto.service';
-import { DialogService } from './../../shared/dialog.service';
-import { ICategoria } from 'src/app/categoria/categoria.interface';
-import { AlertService } from '../../shared/alert.service';
-import { ProdutoModel } from '../produto.model';
-import { ConfimarDeleteComponent } from 'src/app/shared/confimar-delete/confimar-delete.component';
 import { NgxPermissionsService } from 'ngx-permissions';
+import { ICategoria } from 'src/app/categoria/categoria.interface';
+import { DialogService } from 'src/app/shared/dialog.service';
+import { AlertService } from '../../shared/alert.service';
+import { ProdutoFormComponent } from '../produto-form/produto-form.component';
+import { ProdutoModel } from '../produto.model';
+import { ProdutoService } from '../produto.service';
+import { JsontocsvService } from './../../shared/jsontocsv.service';
 
 @Component({
   selector: 'app-produto-list',
@@ -37,7 +35,7 @@ export class ProdutoListComponent implements OnInit {
     this._title.setTitle('Lista de produtos');
     this.getProdutos();
     this._produtoService.alterouProdutos.subscribe((item) => this.getProdutos());
-    this._dialogService.getDelete().subscribe((ok) => (ok ? this.delete(this.produto) : ''));
+    // this._dialogService.getDelete().subscribe((ok) => (ok ? this.delete(this.produto) : ''));
   }
 
   getProdutos() {
@@ -48,7 +46,7 @@ export class ProdutoListComponent implements OnInit {
   }
   openDialogDelete(produto: ProdutoModel) {
     this.produto = produto;
-    this._dialogService.openDialog(ConfimarDeleteComponent, { produto, tipo: 'Produto' });
+    // this._dialogService.openDialog(ConfimarDeleteComponent, { produto, tipo: 'Produto' });
   }
   delete(produto: any) {
     this._produtoService.deleteProduto(produto.id).subscribe(
@@ -66,7 +64,7 @@ export class ProdutoListComponent implements OnInit {
     this._dialogService.openDialog(ProdutoFormComponent, produto);
   }
   onNoClick() {
-    this._dialogService.closeDialog();
+    // this._dialogService.closeDialog();
   }
 
   printPage(item: any) {

@@ -1,13 +1,12 @@
-import { AjudaAppService } from './../../shared/ajuda-app.service';
-import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
-
-import { CategoriaService } from '../categoria.service';
-import { CategoriaFormComponent } from '../categoria-form/categoria-form.component';
-import { DialogService } from '../../shared/dialog.service';
-import { AlertService } from '../../shared/alert.service';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ICategoria } from '../categoria.interface';
+import { AlertService } from '../../shared/alert.service';
 import { ConfimarDeleteComponent } from '../../shared/confimar-delete/confimar-delete.component';
+import { DialogService } from '../../shared/dialog.service';
+import { CategoriaFormComponent } from '../categoria-form/categoria-form.component';
+import { ICategoria } from '../categoria.interface';
+import { CategoriaService } from '../categoria.service';
+import { AjudaAppService } from './../../shared/ajuda-app.service';
 
 @Component({
   selector: 'app-categoria-list',
