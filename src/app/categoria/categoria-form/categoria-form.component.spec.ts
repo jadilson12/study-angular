@@ -1,5 +1,5 @@
 import { CategoriaFormComponent } from './categoria-form.component';
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject, waitForAsync } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -16,7 +16,7 @@ describe('#Categoria form', () => {
   let de: DebugElement;
   let el: HTMLElement;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [CategoriaFormComponent],
       imports: [ReactiveFormsModule, MatSnackBarModule, HttpClientTestingModule, MatDialogModule],
@@ -44,13 +44,13 @@ describe('#Categoria form', () => {
     fixture.detectChanges();
   });
 
-  it('Formulario deve está invalido', async(() => {
+  it('Formulario deve está invalido', waitForAsync(() => {
     component.form.controls.nome.setValue('');
     component.form.controls.descricao.setValue('');
     expect(component.form.valid).toBeFalsy();
   }));
 
-  it('Formulario deve está valido', async(() => {
+  it('Formulario deve está valido', waitForAsync(() => {
     component.form.controls.nome.setValue('Nome teste');
     component.form.controls.descricao.setValue('Descricao');
     expect(component.form.valid).toBeTruthy();

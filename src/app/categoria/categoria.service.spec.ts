@@ -1,4 +1,4 @@
-import { async, TestBed, inject, fakeAsync } from '@angular/core/testing';
+import { TestBed, inject, fakeAsync, waitForAsync } from '@angular/core/testing';
 
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
@@ -13,7 +13,7 @@ describe('#Categoria Services', () => {
   let mockId: number;
   let service: CategoriaService;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [CategoriaService],

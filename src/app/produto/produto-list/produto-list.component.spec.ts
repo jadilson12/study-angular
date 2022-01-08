@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ProdutoListComponent } from './produto-list.component';
 import { CommonModule } from '@angular/common';
@@ -36,7 +36,7 @@ describe('ProdutoListComponent', () => {
   let produtoService: ProdutoService;
   let ngxPermissionsService: NgxPermissionsService;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ProdutoListComponent],
       imports: [

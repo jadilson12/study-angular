@@ -1,5 +1,5 @@
 import { element } from 'protractor';
-import { async, TestBed, ComponentFixture } from '@angular/core/testing';
+import { TestBed, ComponentFixture, waitForAsync } from '@angular/core/testing';
 
 import { CategoriaListComponent } from './categoria-list.component';
 import { CommonModule } from '@angular/common';
@@ -45,7 +45,7 @@ describe('#Categoria List', () => {
   let titleCategoria: HTMLElement;
   let btnNovaCategoria: HTMLElement;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [CategoriaListComponent],
       imports: [

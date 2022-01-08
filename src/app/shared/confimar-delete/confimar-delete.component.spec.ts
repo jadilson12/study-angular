@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ConfimarDeleteComponent } from './confimar-delete.component';
 import { MatGridListModule } from '@angular/material/grid-list';
@@ -12,7 +12,7 @@ describe('ConfimarDeleteComponent', () => {
   let fixture: ComponentFixture<ConfimarDeleteComponent>;
   let dialogservice: DialogService;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ConfimarDeleteComponent],
       imports: [MatGridListModule, MatCardModule, MatDialogModule],

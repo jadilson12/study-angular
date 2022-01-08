@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MessageErrorComponent } from './message-error.component';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 
@@ -8,7 +8,7 @@ describe('#Messagem de erro componente', () => {
 
   const nameValue: FormControl = new FormControl('inicializarValue');
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [MessageErrorComponent],
       imports: [ReactiveFormsModule],
